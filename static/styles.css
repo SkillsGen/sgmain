@@ -54,6 +54,33 @@ body {
     width: 100%; /* Set width to 100% */
 }
 
+.jumbotron {
+    padding-left:40px;
+    padding-right: 40px;
+    margin-bottom: 0px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.jumbowhite {
+    background-color:white;
+    
+}
+
+.course-logo {
+    color: deepskyblue;
+    font-size: 50px;
+    padding-top: 12px;
+    border-style: dashed;
+    border-color: lightgray;
+    border-radius: 10px;
+    height: 179px;
+}
+
+.course-logo h3 {
+    color: grey;
+    letter-spacing: 4px;
+}
 
 #myFooter {
     background-color: #3c3d41;
