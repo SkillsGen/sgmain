@@ -98,7 +98,10 @@ def login_required(f):
 
 @app.route("/", methods=["GET", "POST"])
 def index(message=""):
-    return render_template("index.html")
+    
+    upcoming = db.execute("SELECT * FROM bookings WHERE private = 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date")
+    
+    return render_template("index.html" upcoming = upcoming)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
