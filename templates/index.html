@@ -43,7 +43,7 @@
         <div class="col-sm-3">
             <div class="course-logo">
                 <i class="fa fa-desktop"></i>
-                <h3 style="margin-top:29px">IT Courses</h3>
+                <h3 style="margin-top:27px">IT Courses</h3>
             </div>
         </div>
         <div class="col-sm-3">
@@ -55,7 +55,7 @@
         <div class="col-sm-3">
             <div class="course-logo">
                 <i class="fa fa-cogs"></i>
-                <h3 style="margin-top:29px">Technical Skills</h3>
+                <h3 style="margin-top:27px">Technical Skills</h3>
             </div>
         </div>
         <div class="col-sm-3">
@@ -68,35 +68,93 @@
 </div>
 <div class="jumbotron">
     <div class="row text-center">
-        <div class="col-sm-7" style="padding-top:5px">
-            <p>SkillsGen is a leading provider for IT training courses Liverpool, Merseyside and throughout the Northwest of England. We have been providing quality IT training courses Liverpool for more than 15 years.</p>
+        <div class="col-sm-7" style="border-right: solid; border-width: 1px; border-color: grey; padding-right: 40px ">
+            <p style="margin-top: 20px">SkillsGen is a leading provider for IT training courses Liverpool, Merseyside and throughout the Northwest of England. We have been providing quality IT training courses Liverpool for more than 15 years.</p>
             <p>As the only Microsoft Approved Training Company in Merseyside we can offer Microsoft Accredited training on all Microsoft products from desktop to technical subjects, as well as Microsoft MOS and MTA exams in our testing centre.</p>
             <p>We also offer a range of Management and Leadership Skills Training courses providing a comprehensive portfolio of Soft Skills Training.</p>
             <p>So whether you require a one to one consultancy or a corporate roll-out, we can help you with our vast network of qualified trainers & instructors, complimented by our portable classrooms when required.</p>
         </div>
         <div class="col-sm-5">
-            <h3 style="margin-top:0px">Our Partners</h3>
-            <div class="row text-center">
-                <div class="col-sm-6">
-                    <img class="img-responsive" src="{{ url_for('static', filename='microsoftpartnerA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='certiportA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='cogentA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='stayaheadA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='mictA.png') }}">
+            <h2 style="margin-top:0px; color: lightskyblue;">Upcoming Public Courses!</h2>
+        </div>
+    </div>
+</div>
+<div class="jumbotron jumbowhite text-center">
+    <div class="row">
+        <h3 style="margin-top:0px">Our Partners</h3>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='microsoftpartnerA.png') }}">   
+        </div>
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='mictA.png') }}" style="margin-top:8px">
+        </div>
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='lccA.png') }}">    
+        </div>
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='mosA.png') }}">                
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='certiportA.png') }}">
+        </div>
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='datrixA.png') }}">
+        </div>
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='pflA.png') }}">
+        </div>
+        <div class="col-sm-3">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='prodigyA.png') }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='cogentA.png') }}" style="max-height: 100px">        
+        </div>
+        <div class="col-sm-6">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='stayaheadA.png') }}" style="max-height: 100px">
+        </div>
+    </div>
+</div>
+
+<div id="text-carousel" class="carousel slide" data-ride="carousel">
+    <h3 style="text-align:center;margin-top:0px;padding-bottom:25px">Testimonials</h3>
+    <!-- Wrapper for slides -->
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6">
+            <div class="carousel-inner">
+                <div class="item active" style="height:238px">
+                    <div class="carousel-content">
+                        <div>
+                            <p>We have used skillsgen for the past 5 years to deliver various IT training sessions, including Microsoft Word, Excel and Effective Presentations using PowerPoint. We have also used them to provide bespoke soft-skills training such as Customer Care and Time Management. We have a lot of courses that we like to tailor to a particular group of staff and SkillsGen have always worked with us to provide the best possible course to meet our training needs.</p>
+                            <p>Based on feedback from the staff and the service provided I can highly recommend SkillsGen. I have always found them very customer focused and responsive to inquiries.</p>
+                            <h4 style="text-align: right">HR Liverpool Hope University</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <img class="img-responsive" src="{{ url_for('static', filename='lccA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='prodigyA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='mosA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='pflA.png') }}">
-                    <img class="img-responsive" src="{{ url_for('static', filename='datrixA.png') }}">
+                <div class="item" style="height:238px">
+                    <div class="carousel-content">
+                        <div>
+                            <p>We have successfully contracted with SkillsGen to design and deliver number of key training development projects. These projects have included bespoke environmental training and SoftSkills training such as Leader/Teacher training courses. I have always found SkillsGen to be responsive, customer focussed and commited to the delivery of excellence. SkillsGen have always demonstrated a high degree of professionalism ensuring they fully understand our training needs and outcomes.</p>
+                            <p>In addition we use SkillsGen on an ongoing basis to deliver IT skills training. These courses have proved very popular and useful for our employees. It's fantistic to have a training company so close and with such great customer focus.</p>
+                            <h4 style="text-align: right">Getrag Halewood</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="jumbotron jumbowhite">
-    Hello
+    <!-- Controls --> 
+    <a class="left carousel-control" href="#text-carousel" data-slide="prev" style="background-image: none; filter: none">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#text-carousel" data-slide="next" style="background-image: none; filter: none">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
 </div>
 
 {% endblock %}
