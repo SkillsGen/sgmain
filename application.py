@@ -111,9 +111,23 @@ def index(message=""):
 def about(message=""):
     return render_template("about.html")
 
-@app.route("/inquire", methods=["GET"])
+@app.route("/inquire", methods=["GET", "POST"])
 def inquire(message=""):
-    return render_template("inquire.html")
+    if request.method == 'POST':
+        data = request.form.get('inquiry')
+        return redirect(url_for('thankyou'))
+    
+    elif request.args.get("token") != None:
+        booking = db.execute("SELECT bookings.date, courses.name AS course FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.id = :id",
+                                id = request.args.get('token')
+                                )
+    else:
+        booking = None
+    return render_template("inquire.html", booking = booking[0])
+
+@app.route("/thankyou", methods=["GET", "POST"])
+def thankyou(message=""):
+    return render_template("thankyou.html")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

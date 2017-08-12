@@ -41,25 +41,25 @@
 <div class="jumbotron jumbowhite">
     <div class="row text-center">
         <div class="col-sm-3">
-            <div class="course-logo">
+            <div id="it" class="course-logo">
                 <i class="fa fa-desktop"></i>
                 <h3 style="margin-top:27px">IT Courses</h3>
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="course-logo">
+            <div id="manage" class="course-logo">
                 <i class="fa fa-commenting"></i>
                 <h3>Management Skills</h3>
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="course-logo">
+            <div id="technical" class="course-logo">
                 <i class="fa fa-cogs"></i>
                 <h3 style="margin-top:27px">Technical Skills</h3>
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="course-logo">
+            <div id="exams" class="course-logo">
                 <i class="fa fa-windows"></i>
                 <h3>MOS & MTA Exams</h3>
             </div>
@@ -75,7 +75,7 @@
             <p>So whether you require a one to one consultancy or a corporate roll-out, we can help you with our vast network of qualified trainers & instructors, complimented by our portable classrooms when required.</p>
         </div>
         <div class="col-sm-5">
-            <h2 style="margin-top:0px; color: lightskyblue; margin-bottom: 30px">Upcoming Public Courses!</h2>
+            <h2 style="margin-top:0px; color: lightskyblue; margin-bottom: 30px;margin-right: -27px">Upcoming Public Courses!</h2>
             {% for row in upcoming %}
                 <div class="upcoming">
                     <div class="row">
@@ -180,5 +180,18 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
 </div>
-
+<script>
+    document.getElementById('it').onclick = function() {
+        window.location.href = "{{ url_for('about') }}";
+    };
+    document.getElementById('manage').onclick = function() {
+        window.location.href = "{{ url_for('about') }}";
+    };
+    document.getElementById('technical').onclick = function() {
+        window.location.href = "{{ url_for('about') }}";
+    };
+    document.getElementById('exams').onclick = function() {
+        window.location.href = "{{ url_for('about') }}";
+    };
+</script>
 {% endblock %}

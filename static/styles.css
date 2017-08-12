@@ -22,7 +22,13 @@ body {
     
 }
 
+h3 {
+    letter-spacing: 4px;
+}
 
+h2 {
+    letter-spacing: 4px;
+}
 .overlay { 
   position:absolute;
     background-color: black;
@@ -65,11 +71,7 @@ body {
     padding-top:30px;
 }
 
-.carousel-inner img {
-    -webkit-filter: grayscale(90%) blur(4px);
-    filter: grayscale(80%) blur (3px);
-    width: 100%; /* Set width to 100% */
-}
+
 
 .jumbotron {
     padding-left:40px;
@@ -92,6 +94,7 @@ body {
     border-color: lightgray;
     border-radius: 10px;
     height: 179px;
+    cursor: pointer;
 }
 
 .upcoming {
