@@ -13,7 +13,7 @@
 }
 
 body {
-  padding-top: 0px;
+  padding-top: 51px;
   padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
@@ -45,10 +45,10 @@ body {
 }
 
 .carousel .item {
-    height: 500px;
+    height: 450px;
 }
 #myCarousel {
-    height: 500px;
+    height: 450;
 }
 
 .carousel-content {
@@ -94,6 +94,35 @@ body {
     height: 179px;
 }
 
+.upcoming {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    border-width: 3px;
+    background-color: white;
+    font-size:20px;
+    height:70px;
+    margin-left: 25px
+}
+
+.upcoming img {
+    position:absolute;
+    margin-top: -3px;
+    margin-left: -28px;
+    height: 71px;
+    border-radius: 10px;
+}
+
+.booknow {
+    font-size: 15px;
+    transform: rotate(-30deg);
+    color: white;
+    background-color: lightskyblue;
+    margin-top: 10px;
+    margin-left: -50px;
+    border-radius: 20px;
+}
+
 .course-logo h3 {
     color: grey;
     letter-spacing: 4px;
@@ -104,6 +133,22 @@ body {
     margin: 0 auto;
     padding-top:30px;
     
+}
+
+.contact {
+    font-size:50px;
+    color: lightskyblue;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+#map {
+        height: 400px;
+        width: 100%;
+}
+#pano {
+    height:350px;
+    width:100%;
 }
 
 #myFooter {

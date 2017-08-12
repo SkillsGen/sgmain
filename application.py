@@ -95,13 +95,25 @@ def login_required(f):
     return decorated_function
 
 
-
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET"])
 def index(message=""):
     
-    upcoming = db.execute("SELECT * FROM bookings WHERE private = 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date")
+    upcoming = db.execute("SELECT bookings.id, bookings.date, courses.name AS course, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
     
-    return render_template("index.html" upcoming = upcoming)
+    for row in upcoming:
+        row["day"] = row["day"].title()
+        row["month"] = row["month"].title()
+        row["date_part"] = int(row["date_part"])
+    
+    return render_template("index.html", upcoming = upcoming)
+
+@app.route("/about", methods=["GET"])
+def about(message=""):
+    return render_template("about.html")
+
+@app.route("/inquire", methods=["GET"])
+def inquire(message=""):
+    return render_template("inquire.html")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
