@@ -79,10 +79,10 @@
             {% for row in upcoming %}
                 <div class="upcoming">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-xs-2">
                             <img src="{{ url_for('static', filename='excel-icon.png') }}">
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-xs-9">
                             <div class="row">
                                 {{ row.course }}
                             </div>
@@ -90,7 +90,7 @@
                                 {{ row.day }} {{ row.month }} {{ row.date_part}}
                             </div>    
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-xs-1">
                             <a href="{{ url_for('inquire', token = row.id) }}" class="navbar-left">
                                 <div class="booknow">
                                     BOOK NOW!
