@@ -20,13 +20,13 @@
     </ol>
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
+        <div class="item active" style="height:450px">
             <img  src="{{ url_for('static', filename='a.jpg') }}">
         </div>
-        <div class="item">
+        <div class="item" style="height:450px">
             <img  src="{{ url_for('static', filename='b.jpg') }}">
         </div>
-        <div class="item">
+        <div class="item" style="height:450px">
             <img  src="{{ url_for('static', filename='c.jpg') }}">
         </div>
         <!-- Left and right controls -->
@@ -151,7 +151,7 @@
     <div class="row">
         <div class="col-xs-offset-3 col-xs-6">
             <div class="carousel-inner">
-                <div class="item active" style="height:238px">
+                <div class="item active">
                     <div class="carousel-content">
                         <div>
                             <p>We have used skillsgen for the past 5 years to deliver various IT training sessions, including Microsoft Word, Excel and Effective Presentations using PowerPoint. We have also used them to provide bespoke soft-skills training such as Customer Care and Time Management. We have a lot of courses that we like to tailor to a particular group of staff and SkillsGen have always worked with us to provide the best possible course to meet our training needs.</p>
@@ -160,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item" style="height:238px">
+                <div class="item">
                     <div class="carousel-content">
                         <div>
                             <p>We have successfully contracted with SkillsGen to design and deliver number of key training development projects. These projects have included bespoke environmental training and SoftSkills training such as Leader/Teacher training courses. I have always found SkillsGen to be responsive, customer focussed and commited to the delivery of excellence. SkillsGen have always demonstrated a high degree of professionalism ensuring they fully understand our training needs and outcomes.</p>
@@ -179,6 +179,22 @@
     <a class="right carousel-control" href="#text-carousel" data-slide="next" style="background-image: none; filter: none">
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
+</div>
+<div class="jumbotron jumbowhite">
+    <div class="row text-center">
+        <div class="col-sm-5">
+            <h3 style="margin-top:0px">Tweets from @SKILLSGENLTD</h3>
+            <a class="twitter-timeline" data-chrome="noheader nofooter" data-width="450" data-height="600" data-tweet-limit="2" data-dnt="true" href="https://twitter.com/Skillsgenltd">Tweets by Skillsgenltd</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="col-sm-7">
+            <h3 style="margin-top:0px">Great Companies Use SkillsGen</h3>
+            <img class="img-responsive partner" src="{{ url_for('static', filename='allergan-logo.png') }}">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='hope-logo.png') }}">
+            <img class="img-responsive partner" style="width: 300px"src="{{ url_for('static', filename='getrag-logo.png') }}">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='prinovis-logo.png') }}">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='wfs-logo.jpg') }}">
+        </div>
+    </div>
 </div>
 <script>
     document.getElementById('it').onclick = function() {
