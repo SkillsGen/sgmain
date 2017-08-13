@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Microsoft Certification
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron text-center">
+    <div class="row">
+        <h2 style="margin-top:0px">Microsoft Office Specialist Certification</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="embed-responsive embed-responsive-4by3" style="margin-top:30px">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/nTeND8MsR-0"></iframe>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <p style="padding-top:45px">The Microsoft Office Specialist is a globally recognised qualification. Having a Microsoft Office Specialist certification on your CV demonstrates that you have gained the necessary expertise to competently use Microsoft applications, giving you a competitive advantage when job hunting as well as in the workplace. It will significantly increase your confidence, skills and employability. It will serve to objectively validate your IT skills and assist in your advancement in your chosen career. Each certificate is a qualification in its own right – so you can take just one, or as many as you like.  For instance, you can choose to become a Microsoft Office Specialist in Word or Excel or PowerPoint… or all of them if you choose.</p>
+        </div>
+    </div>
+</div>
+<div class="jumbotron jumbowhite text-center">
+            <p style="padding-top:10px">We are a MOS (Microsoft Office Systems) & MTA (Microsoft Technology Associate) Testing Centre.</p>
+            <p>The MTA & MOS exams are online and provided through Certiport. Exam vouchers or test bundles can be purchased. If you already have an exam voucher then you only need pay for the proctoring.</p>
+            <p>If you have any questions, or wish to book an exam please <a href="{{ url_for('inquire') }}">inquire directly</a>.</p>
+            <p>We wish you every success with your exams!</p>
+
+</div>
+{% endblock %}

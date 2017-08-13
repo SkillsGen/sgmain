@@ -36,8 +36,15 @@
                 <a href="{{ url_for('index') }}" class="navbar-left"><img src="{{ url_for('static', filename='logopng.png') }}" width="115px" ></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url_for('itcourses') }}">IT Courses</a></li>
+                        <li><a href="{{ url_for('management') }}">Management Skills</a></li>
+                        <li><a href="{{ url_for('technical') }}">Technical Skills</a></li>
+                        <li><a href="{{ url_for('exams') }}">MOS Exams</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li style="border-right: solid; border-width:1px;border-color:light grey"><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li style="border-right: solid; border-width:1px;border-color:light grey"><a href="{{ url_for('inquire') }}">Inquire</a></li>
                         <li><a><i class="fa fa-search "></i> Search</a></li>
                     </ul>
                 </div>
@@ -68,7 +75,7 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>© 2017 SkillsGen</p>
+            <p>© 2017 Binary Heavy Industries</p>
         </div>
     </footer>
 </html>

@@ -182,16 +182,16 @@
 </div>
 <script>
     document.getElementById('it').onclick = function() {
-        window.location.href = "{{ url_for('about') }}";
+        window.location.href = "{{ url_for('itcourses') }}";
     };
     document.getElementById('manage').onclick = function() {
-        window.location.href = "{{ url_for('about') }}";
+        window.location.href = "{{ url_for('management') }}";
     };
     document.getElementById('technical').onclick = function() {
-        window.location.href = "{{ url_for('about') }}";
+        window.location.href = "{{ url_for('technical') }}";
     };
     document.getElementById('exams').onclick = function() {
-        window.location.href = "{{ url_for('about') }}";
+        window.location.href = "{{ url_for('exams') }}";
     };
 </script>
 {% endblock %}

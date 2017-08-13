@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Skillsgen IT Courses
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron" style="padding-bottom:12px">
+    <h2 style="margin-top:0px">Our Most Popular IT Courses</h2>
+    <p> These are some of our most popular courses. If you can't find what your looking for try the <a href="{{ url_for('inquire') }}">search</a> or just <a href="{{ url_for('inquire') }}">inquire directly</a>.</p>
+</div>
+<div class="jumbotron jumbowhite text-center">
+    <div class="row">
+        <div id="excel" class="col-sm-4">
+            <div class="courseblock">
+                <img class="img-responsive" src="{{ url_for('static', filename='excel-logo.png') }}">
+                <h3>Microsoft Excel</h3>
+                <p>From our <b>Using Excel Level One</b> introductory course all the way to the ultimate <b>Excel For Experts</b> course. Our Microsoft Excel courses are the best way to learn this powerful tool and really make it work for.</p>
+            </div>
+        </div>
+        <div id="project" class="col-sm-4">
+            <div class="courseblock">
+                <img class="img-responsive" src="{{ url_for('static', filename='project-logo.png') }}">
+                <h3>Microsoft Project</h3>
+                <p>Our Microsoft Project courses will get you up to speed on using this popular tool for creating, maintaining and tracking your plans and projects.</p>
+            </div>
+        </div>
+        <div id="project" class="col-sm-4">
+            <div class="courseblock">
+                <img class="img-responsive" src="{{ url_for('static', filename='pp-logo.png') }}">
+                <h3>Microsoft PowerPoint</h3>
+                <p>Our Microsoft PowerPoint courses will give you the technical skills and confidence required to give great presentations with this popular software.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron">
+    <h2 style="margin-top:0px">The Full List</h2>
+</div>
+
+{% endblock %}
