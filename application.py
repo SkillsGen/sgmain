@@ -126,25 +126,49 @@ def inquire(message=""):
         booking = None
     return render_template("inquire.html", booking = booking)
 
+
 @app.route("/thankyou", methods=["GET", "POST"])
 def thankyou(message=""):
     return render_template("thankyou.html")
 
+
 @app.route("/it-courses", methods=["GET", "POST"])
 def itcourses(message=""):
-    return render_template("it-courses.html")
+    courses = db.execute("SELECT id, name FROM courses WHERE type = 1")
+    
+    return render_template("it-courses.html", courses = courses)
 
+@app.route("/it", methods=["GET"])
+def it(message=""):
+    if request.args.get("course") == None:
+        return "sorry course not found"
+    check = db.execute("SELECT EXISTS(SELECT name FROM courses WHERE id = :id)",
+                            id = request.args.get("course")
+                            )
+    if check[0]["exists"] != True:
+        return "sorry course not found"
+    
+    else:
+        course = db.execute("SELECT * FROM courses WHERE id = :id",
+                                id = request.args.get("course")
+                                )
+        return render_template("it.html", course = course)
+
+    
 @app.route("/management", methods=["GET", "POST"])
 def management(message=""):
     return render_template("management.html")
+
 
 @app.route("/technical", methods=["GET", "POST"])
 def technical(message=""):
     return render_template("technical.html")
 
+
 @app.route("/exams", methods=["GET"])
 def exams(message=""):
     return render_template("exams.html")
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

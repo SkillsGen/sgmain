@@ -34,8 +34,19 @@
         </div>
     </div>
 </div>
-<div class="jumbotron">
+<div class="jumbotron text-center">
     <h2 style="margin-top:0px">The Full List</h2>
+    <div class="row">
+        {% for row in courses %}
+        <div class="col-sm-6">
+            <a href="{{ url_for('it', course = row.id) }}">
+                <div class="subcourseblock">
+                <h3 style="margin-top:10px">{{ row.name }}</h3>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
