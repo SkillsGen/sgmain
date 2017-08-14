@@ -207,8 +207,41 @@
         </div>
     </div>
 </div>
-<div class="jumbotron">
-    Space for whatever you want
+<div class="jumbotron text-center">
+    <div class="row">
+        <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">Bespoke IT Training</h3>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Public</h4>
+                <p>Mix of individuals from various companies training in a class together.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Tailored</h4>
+                <p>Specifically designed with your business requirements in mind, tailored to your industry needs. Timings to suit shift patterns as well as group sizes.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Closed Company Group</h4>
+                <p>Groups from same companies trained either on their own site or ours. These courses can be tailored to suit exact business requirements.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Consultancy</h4>
+                <p>Working with an individual to help them gain the experience they need in a live and hands on working situation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button id="tailored-button" type="button" class="btn btn-info">Learn About Our Bespoke Options</button>
+    </div>
 </div>
 <div class="jumbotron jumbowhite">
     <div class="row text-center">
@@ -238,6 +271,9 @@
     };
     document.getElementById('exams').onclick = function() {
         window.location.href = "{{ url_for('exams') }}";
+    };
+    document.getElementById('tailored-button').onclick = function() {
+        window.location.href = "{{ url_for('tailored') }}";
     };
 </script>
 {% endblock %}

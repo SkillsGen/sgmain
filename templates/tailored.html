@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tailored Options
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron text-center">
+    <div class="row">
+        <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">Bespoke IT Training</h3>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Public</h4>
+                <p>Mix of individuals from various companies training in a class together.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Floor Walking</h4>
+                <p>Training consultants on hand and available throughout the day for questions & answers in the working environment. The trainer would cover various IT applications to a high standard in order to be able to answers all questions live.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Closed Company Group</h4>
+                <p>Groups from same companies trained either on their own site or ours. These courses can be tailored to suit exact business requirements.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Seminars and Presentations</h4>
+                <p>Designed for larger groups who need to be updated with new procedures and company policies. </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Tailored</h4>
+                <p>Specifically designed with your business requirements in mind, tailored to your industry needs. Timings to suit shift patterns as well as group sizes.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Room Hire</h4>
+                <p>Bespoke IT Training classrooms for groups of up to 12, including software licence costs and course setups. Alternatively Hire for Soft Skill or Seminar groups.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Consultancy</h4>
+                <p>Working with an individual to help them gain the experience they need in a live and hands on working situation.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Bite Size Sessions</h4>
+                <p>In depth sessions on specific topics run generally over a two hour period. Please enquire for IT topics list.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Roll Outs</h4>
+                <p>Working with your company to design a Bespoke IT Training package to suit your new working procedure’s and working practises. We can design both the course as well as write the materials followed by implementation of the training in a live situation or classroom environment. This is usually complimented by a period of floor walking/hand holding days whilst the new procedures are tested.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Drop In Clinic</h4>
+                <p>We regularly hold clinics on clients site with open invitations for individuals to come along with queries/help needed. The trainer works with the individual to help with any problems they have. Whether it’s a 5 minute fix or hour long demonstration the Trainer is on hand all day for as many Appointment/Walk Ins needed on a daily basis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Workshops</h4>
+                <p>Designed for groups of like minded people needing help and advice with a particular problem, seeking to work through the issues & problems live and gathering information to implement new practises.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tailored">
+                <h4>Skype</h4>
+                <p>We can offer you help with live Bespoke IT Training over the web using Skype. Delivery for smaller groups in short hour long bursts over the internet. Designed with the busy professionals in mind.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button style="margin-top:20px" id="inquire-button" type="button" class="btn btn-info">Inquire</button>
+    </div>
+</div>
+<div class="jumbotron jumbowhite text-center">
+    <p>Standard public course training times 9.30am-4.30pm full day or 9.30am-12.30 & 1.30pm-4.30pm for half day sessions run back to back. Training can be on your site anywhere in the UK or our site.</p>
+    <p>Portable class rooms available on request for Closed IT courses. The hire rate includes Microsoft Software licences as well as the transport to and from & setup.</p>
+    <p>Training at our venue or your venue across the UK to suit as well as overseas if required. Groups sizes for IT from 1 to 10 or up to 15 for Soft Skills/Management style Training or up to 50 for Seminar/Presentation style sessions.</p>
+    <p></p>
+</div>
+
+<script>
+    document.getElementById('inquire-button').onclick = function() {
+        window.location.href = "{{ url_for('inquire') }}";
+    };
+</script>
+{% endblock %}

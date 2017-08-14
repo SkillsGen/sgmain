@@ -111,6 +111,10 @@ def index(message=""):
 def about(message=""):
     return render_template("about.html")
 
+@app.route("/tailored", methods=["GET"])
+def tailored(message=""):
+    return render_template("tailored.html")
+
 @app.route("/inquire", methods=["GET", "POST"])
 def inquire(message=""):
     if request.method == 'POST':

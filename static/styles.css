@@ -175,6 +175,15 @@ h2 {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.tailored h4 {
+    padding-bottom:0px;
+    text-align:left;
+}
+.tailored p {
+    font-size:18px;
+    text-align:left;
+}
 #map {
         height: 400px;
         width: 100%;
