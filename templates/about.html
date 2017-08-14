@@ -42,13 +42,14 @@
                 <h3 style="margin-top: 0px; padding-bottom: 10px;margin-bottom:25px ; border-bottom: solid; border-width:1px; border-color: lightgrey">Getting To Us:</h3>
                 <p>We are alongside the Jaguar Factory on the west bound side of the A561 Speke Blvd - a dual carriageway from Speke to Widnes. The tall building is signed PFL Training & Conference Centre and there is an exit from the westbound side just by the centre - after the traffic lights from Morrison's Superstore. </p>
             </div>
-            <div class="col-sm-8">
+            <div id="mapcontainer" class="col-sm-8">
                 <div id="map"></div>
             </div>
         </div>    
     </div>
-    
-    <div id="pano"></div>
+    <div id="panocontainer">
+        <div id="pano"></div>
+    </div>
     
     <script>
         function initMap() {
@@ -74,5 +75,19 @@
         </script>
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYYCwHHFKXfRD03ym5EJqhk24ylc6QtqE&callback=initMap">
+        </script>
+        <script>
+            document.getElementById('mapcontainer').onclick = function() {
+                document.getElementById('map').style.pointerEvents = "auto";
+            }
+            document.getElementById('mapcontainer').addEventListener("mouseleave", function() {
+                document.getElementById('map').style.pointerEvents = "none";
+            });
+            document.getElementById('panocontainer').onclick = function() {
+                document.getElementById('pano').style.pointerEvents = "auto";
+            }
+            document.getElementById('panocontainer').addEventListener("mouseleave", function() {
+                document.getElementById('pano').style.pointerEvents = "none";
+            });
         </script>
 {% endblock %}

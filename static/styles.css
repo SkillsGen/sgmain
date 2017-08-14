@@ -185,12 +185,14 @@ h2 {
     text-align:left;
 }
 #map {
-        height: 400px;
-        width: 100%;
+    height: 400px;
+    width: 100%;
+    pointer-events: none;
 }
 #pano {
     height:350px;
     width:100%;
+    pointer-events: none;
 }
 
 #myFooter {
