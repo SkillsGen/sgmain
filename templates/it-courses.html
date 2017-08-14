@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="jumbotron text-center">
-    <h2 style="margin-top:0px">The Full List</h2>
+    <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">The Full List</h3>
     <div class="row">
         {% for row in courses %}
         <div class="col-sm-6">
@@ -48,5 +48,9 @@
         {% endfor %}
     </div>
 </div>
-
+<script>
+    document.getElementById('excel').onclick = function() {
+        window.location.href = "{{ url_for('excel') }}";
+    };
+</script>
 {% endblock %}

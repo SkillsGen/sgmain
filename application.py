@@ -127,12 +127,12 @@ def inquire(message=""):
     return render_template("inquire.html", booking = booking)
 
 
-@app.route("/thankyou", methods=["GET", "POST"])
+@app.route("/thankyou", methods=["GET"])
 def thankyou(message=""):
     return render_template("thankyou.html")
 
 
-@app.route("/it-courses", methods=["GET", "POST"])
+@app.route("/it-courses", methods=["GET"])
 def itcourses(message=""):
     courses = db.execute("SELECT id, name FROM courses WHERE type = 1")
     
@@ -155,12 +155,16 @@ def it(message=""):
         return render_template("it.html", course = course)
 
     
-@app.route("/management", methods=["GET", "POST"])
+@app.route("/excel", methods=["GET"])
+def excel(message=""):
+    return render_template("excel.html")
+    
+@app.route("/management", methods=["GET"])
 def management(message=""):
     return render_template("management.html")
 
 
-@app.route("/technical", methods=["GET", "POST"])
+@app.route("/technical", methods=["GET"])
 def technical(message=""):
     return render_template("technical.html")
 

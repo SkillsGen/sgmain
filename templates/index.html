@@ -68,7 +68,7 @@
 </div>
 <div class="jumbotron">
     <div class="row text-center">
-        <div class="col-sm-7" style="border-right: solid; border-width: 1px; border-color: grey; padding-right: 40px ">
+        <div class="col-sm-7" style="border-right: solid; border-width: 1px; border-color: grey; padding-right: 40px">
             <p style="margin-top: 20px">SkillsGen is a leading provider for IT training courses Liverpool, Merseyside and throughout the Northwest of England. We have been providing quality IT training courses Liverpool for more than 15 years.</p>
             <p>As the only Microsoft Approved Training Company in Merseyside we can offer Microsoft Accredited training on all Microsoft products from desktop to technical subjects, as well as Microsoft MOS and MTA exams in our testing centre.</p>
             <p>We also offer a range of Management and Leadership Skills Training courses providing a comprehensive portfolio of Soft Skills Training.</p>
@@ -105,7 +105,7 @@
 </div>
 <div class="jumbotron jumbowhite text-center">
     <div class="row">
-        <h3 style="margin-top:0px">Our Partners</h3>
+        <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">Our Partners</h3>
     </div>
     <div class="row">
         <div class="col-sm-3">
@@ -146,7 +146,7 @@
 </div>
 
 <div id="text-carousel" class="carousel slide" data-ride="carousel">
-    <h3 style="text-align:center;margin-top:0px;padding-bottom:25px">Testimonials</h3>
+    <h3 style="text-align:center;margin-top:0px;margin-bottom:25px; padding-bottom:10px; border-bottom: solid; border-width:1px; border-color: lightgrey">Testimonials</h3>
     <!-- Wrapper for slides -->
     <div class="row">
         <div class="col-xs-offset-3 col-xs-6">
@@ -180,19 +180,37 @@
         <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
 </div>
+<div class="jumbotron jumbowhite text-center">
+    
+    <div class="row">
+        <div class="col-sm-7">
+            <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">SkillsGen Metrics</h3>
+            <p style="padding-top: 30px">At SkillsGen we recognise that a good understanding of how the learning process is going is one of the most important parts of ensuring people get the most from our training. To that end we've created SkillsGen Metrics.</p>
+            <p>First there is the Pre-Course Questionnaire that you will be asked to fill in before beginning the course. This gives us an understanding of your skill level and any learning priorities that you might have. Allowing us to tailor the training to your exact requirements.</p>
+            <p>At the end of your course there is a questionnaire that invites you to give feedback on your experience with us. This covers all aspects of the training you've received from the instructor and the classroom environment to the training material itself. There is also a self-reported improvement score and an opportunity to give feedback including shortcomings and potential improvements in your own words.</p>
+            <p>We feel that this metrics system is absolutely essential for the continuous development and improvement of the training that we provide for our customers.</p>
+        </div>
+        <div class="col-sm-5">
+            <img class="img-responsive" src="{{ url_for('static', filename='metrics.png') }}" style="max-height: 700px; margin: 0 auto">
+        </div>
+    </div>
+</div>
+<div class="jumbotron">
+    Space for whatever you want
+</div>
 <div class="jumbotron jumbowhite">
     <div class="row text-center">
         <div class="col-sm-5">
             <h3 style="margin-top:0px">Tweets from @SKILLSGENLTD</h3>
-            <a class="twitter-timeline" data-chrome="noheader nofooter" data-width="450" data-height="600" data-tweet-limit="2" data-dnt="true" href="https://twitter.com/Skillsgenltd">Tweets by Skillsgenltd</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" data-chrome="noheader nofooter transparent" data-width="450" data-height="600" data-tweet-limit="2" data-dnt="true" href="https://twitter.com/Skillsgenltd">Tweets by Skillsgenltd</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <div class="col-sm-7">
-            <h3 style="margin-top:0px">Great Companies Use SkillsGen</h3>
+            <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">Great Companies Use SkillsGen</h3>
             <img class="img-responsive partner" src="{{ url_for('static', filename='allergan-logo.png') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='hope-logo.png') }}">
             <img class="img-responsive partner" style="width: 300px"src="{{ url_for('static', filename='getrag-logo.png') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='prinovis-logo.png') }}">
-            <img class="img-responsive partner" src="{{ url_for('static', filename='wfs-logo.jpg') }}">
+            <img class="img-responsive partner" src="{{ url_for('static', filename='wfs-logo.png') }}">
         </div>
     </div>
 </div>
