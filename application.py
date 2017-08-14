@@ -98,7 +98,7 @@ def login_required(f):
 @app.route("/", methods=["GET"])
 def index(message=""):
     
-    upcoming = db.execute("SELECT bookings.id, bookings.date, courses.name AS course, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
+    upcoming = db.execute("SELECT bookings.id, bookings.date, courses.name AS course, courses.type AS type, courses.icon as icon, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
     
     for row in upcoming:
         row["day"] = row["day"].title()

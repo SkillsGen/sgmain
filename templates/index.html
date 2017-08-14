@@ -80,7 +80,19 @@
                 <div class="upcoming">
                     <div class="row">
                         <div class="col-xs-2">
-                            <img src="{{ url_for('static', filename='excel-icon.png') }}">
+                            {% if row.type == 1 %}
+                                {% if row.icon != None and row.icon != "" %}
+                                    <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='icons/IT-icon.png') }}">
+                                {% endif %}
+                            {% elif row.type == 2 %}
+                                <img src="{{ url_for('static', filename='icons/Manage-icon.png') }}">
+                            {% elif row.type == 3 %}
+                                <img src="{{ url_for('static', filename='icons/Technical-icon.png') }}">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='icons/IT-icon.png') }}">
+                            {% endif %}
                         </div>
                         <div class="col-xs-9">
                             <div class="row">
@@ -208,7 +220,7 @@
             <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">Great Companies Use SkillsGen</h3>
             <img class="img-responsive partner" src="{{ url_for('static', filename='allergan-logo.png') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='hope-logo.png') }}">
-            <img class="img-responsive partner" style="width: 300px"src="{{ url_for('static', filename='getrag-logo.png') }}">
+            <img class="img-responsive partner" style="width: 300px" src="{{ url_for('static', filename='getrag-logo.png') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='prinovis-logo.png') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='wfs-logo.png') }}">
         </div>
