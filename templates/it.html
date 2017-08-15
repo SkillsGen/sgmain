@@ -29,15 +29,17 @@
 </div>
 <div style="margin-bottom:0px; padding-bottom:0px"class="jumbotron jumbowhite text-center">
     <div class="row">
-        <div class="col-sm-3">
-            <h3>Duration:</h3>
-            <p>{{ course.duration }} Day(s)</p>
-            <h3>Pre-Requisites:</h3>
-            <p>{{ course.prereq }}</p>
-            <h3>Notes:</h3>
-            <p>{{ course.notes }}</p>
+        <div class="col-sm-3 itdetails">
+            <div class="">
+                <h3>Duration:</h3>
+                <p>{{ course.duration }} Day(s)</p>
+                <h3 style="padding-top:40px">Pre-Requisites:</h3>
+                <p>{{ course.prereq }}</p>
+                <h3 style="padding-top:40px">Notes:</h3>
+                <p>{{ course.notes }}</p>
+            </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9" style="border-left:solid; border-color:lightgrey;border-width:1px">
             <h3>Course Content</h3>
             <div id="contents"></div>
         </div>

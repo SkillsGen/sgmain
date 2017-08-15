@@ -192,6 +192,12 @@ h2 {
     margin-top: 20px;
 }
 
+.itdetails {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 18px;
+}
+
 .tailored h4 {
     padding-bottom:0px;
     text-align:left;
@@ -199,6 +205,18 @@ h2 {
 .tailored p {
     font-size:18px;
     text-align:left;
+}
+
+.technical {
+    height: 9em;
+    display:flex;
+    align-items:center;
+}
+
+.technical2 {
+    height: 15em;
+    display:flex;
+    align-items:center;
 }
 
 .publicdates {
