@@ -15,13 +15,13 @@
         <div class="col-sm-7">
             <h2>{{ course.name }}</h2>
             <p>{{ course.intro }} Please be sure to read the pre-requisites for this course to ensure you meet the requirements.</p>
-            <button style="margin-top:10px" id="inquire-button" type="button" class="btn btn-info">Inquire</button>
+            <button style="margin-top:10px" id="enquire-button" type="button" class="btn btn-info">enquire</button>
         </div>
         <div class="col-sm-2">
             <div class="publicdates">
                 <h3>Upcoming Dates</h3>
                 {% for row in dates %}
-                <a href="{{ url_for('inquire', token = row.id) }}"><h4>{{ row.date_part }} {{ row.month }}</h4></a>
+                <a href="{{ url_for('enquire', token = row.id) }}"><h4>{{ row.date_part }} {{ row.month }}</h4></a>
                 {% endfor %}
             </div>
         </div>
@@ -52,8 +52,8 @@
     for(var i = 2; i < divs.length; i = i + 3) {
         $([divs[i],divs[i-1],divs[i-2]]).wrapAll("<div class='row' />")
     }
-    document.getElementById('inquire-button').onclick = function() {
-        window.location.href = "{{ url_for('inquire') }}";
+    document.getElementById('enquire-button').onclick = function() {
+        window.location.href = "{{ url_for('enquire') }}";
     };
 </script>
 {% endblock %}

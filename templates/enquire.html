@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Inquiries
+    Enquiries
 {% endblock %}
 
 {% block main %}
 <div class="jumbotron">
     <div class="row">
         <div class="col-sm-6 text-center">
-            <h2>Inquiries</h2>
+            <h2>Enquiries</h2>
             <p>If you're interesting in one of the courses you've seen on our website or have further requirements, then please get in contact and help us tailor our training to your exact requirements.</p>
         </div>
         <div class="col-sm-6">
-            <form action="{{ url_for('inquire') }}" method="post">
+            <form action="{{ url_for('enquire') }}" method="post">
                 <div class="form-group">
                     <label for="Name">Name</label>
                     <input class="form-control" id="name" name="name" placeholder="Enter Name" required>
@@ -23,11 +23,11 @@
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
-                    <label for="inquiry">Your Inquiry</label>
+                    <label for="enquiry">Your enquiry</label>
                     {% if booking != None %}
-                        <textarea class="form-control" id="inquiry" name="inquiry" rows="6">I am enquiring about the "{{ booking.course }}" course on the date: {{ booking.date }}.</textarea>
+                        <textarea class="form-control" id="enquiry" name="enquiry" rows="6">I am enquiring about the "{{ booking.course }}" course on the date: {{ booking.date }}.</textarea>
                     {% else %}
-                    <textarea class="form-control" id="inquiry" name="inquiry" rows="6" placeholder="Your enquiry"></textarea>
+                    <textarea class="form-control" id="enquiry" name="enquiry" rows="6" placeholder="Your enquiry"></textarea>
                     {% endif %}
                 </div>
                 <div class="text-center">

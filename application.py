@@ -115,10 +115,10 @@ def about(message=""):
 def tailored(message=""):
     return render_template("tailored.html")
 
-@app.route("/inquire", methods=["GET", "POST"])
-def inquire(message=""):
+@app.route("/enquire", methods=["GET", "POST"])
+def enquire(message=""):
     if request.method == 'POST':
-        data = request.form.get('inquiry')
+        data = request.form.get('enquiry')
         return redirect(url_for('thankyou'))
     
     elif request.args.get("token") != None:
@@ -128,7 +128,7 @@ def inquire(message=""):
         booking = booking[0]
     else:
         booking = None
-    return render_template("inquire.html", booking = booking)
+    return render_template("enquire.html", booking = booking)
 
 
 @app.route("/thankyou", methods=["GET"])
@@ -138,7 +138,7 @@ def thankyou(message=""):
 
 @app.route("/it-courses", methods=["GET"])
 def itcourses(message=""):
-    courses = db.execute("SELECT id, name FROM courses WHERE type = 1")
+    courses = db.execute("SELECT id, name, description, icon FROM courses WHERE type = 1")
     
     return render_template("it-courses.html", courses = courses)
 

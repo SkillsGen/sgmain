@@ -94,7 +94,7 @@
         </div>
     </div>
     <div class="row">
-        <button style="margin-top:20px" id="inquire-button" type="button" class="btn btn-info">Inquire</button>
+        <button style="margin-top:20px" id="enquire-button" type="button" class="btn btn-info">enquire</button>
     </div>
 </div>
 <div class="jumbotron jumbowhite text-center">
@@ -105,8 +105,8 @@
 </div>
 
 <script>
-    document.getElementById('inquire-button').onclick = function() {
-        window.location.href = "{{ url_for('inquire') }}";
+    document.getElementById('enquire-button').onclick = function() {
+        window.location.href = "{{ url_for('enquire') }}";
     };
 </script>
 {% endblock %}
