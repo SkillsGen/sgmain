@@ -6,7 +6,7 @@
 
 {% block main %}
 <div class="jumbotron" style="padding-bottom:12px">
-    <h2 style="margin-top:0px">Our Most Popular IT Courses</h2>
+    <h2>Our Most Popular IT Courses</h2>
     <p> These are some of our most popular courses. If you can't find what your looking for try the <a href="{{ url_for('inquire') }}">search</a> or just <a href="{{ url_for('inquire') }}">inquire directly</a>.</p>
 </div>
 <div class="jumbotron jumbowhite text-center">
@@ -27,7 +27,7 @@
         </div>
         <div id="project" class="col-sm-4">
             <div class="courseblock">
-                <img class="img-responsive" src="{{ url_for('static', filename='pp-logo.png') }}">
+                <img class="img-responsive" src="{{ url_for('static', filename='powerpoint-logo.png') }}">
                 <h3>Microsoft PowerPoint</h3>
                 <p>Our Microsoft PowerPoint courses will give you the technical skills and confidence required to give great presentations with this popular software.</p>
             </div>
@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="jumbotron text-center">
-    <h3 style="margin-top:0px; padding-bottom: 10px; border-bottom: solid; border-width:1px; border-color: lightgrey">The Full List</h3>
+    <h3>The Full List</h3>
     <div class="row">
         {% for row in courses %}
         <div class="col-sm-6">

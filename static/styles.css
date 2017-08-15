@@ -23,11 +23,22 @@ body {
 
 h3 {
     letter-spacing: 4px;
+    margin-top:0px;
+    padding-bottom: 10px;
+    border-bottom: solid;
+    border-width:1px;
+    border-color: lightgrey;
 }
 
 h2 {
     letter-spacing: 4px;
+    margin-top:0px;
+    padding-bottom: 10px;
+    border-bottom: solid;
+    border-width:1px;
+    border-color: lightgrey;
 }
+
 .overlay { 
   position:absolute;
     background-color: black;
@@ -93,6 +104,11 @@ h2 {
     border-radius: 10px;
     height: 179px;
     cursor: pointer;
+}
+
+.course-logo h3{
+    border-bottom: none;
+    margin-top: 17px;
 }
 
 .upcoming {
@@ -184,6 +200,14 @@ h2 {
     font-size:18px;
     text-align:left;
 }
+
+.publicdates {
+    border: solid;
+    border-radius: 10px;
+    background-color: white;
+    padding-top:10px;
+}
+
 #map {
     height: 400px;
     width: 100%;

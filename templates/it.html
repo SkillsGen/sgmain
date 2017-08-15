@@ -1,9 +1,57 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Skillsgen IT Courses
+    {{ course.name }}
 {% endblock %}
 
 {% block main %}
-{{ course }}
+<div class="jumbotron text-center">
+    <div class="row">
+        <div class="col-sm-3">
+            {% if course.icon != None and course.icon != "" %}
+                <img class="img-responsive" src="{{ url_for('static', filename= course.icon + '-logo.png') }}">
+            {% endif %}
+        </div>
+        <div class="col-sm-7">
+            <h2>{{ course.name }}</h2>
+            <p>{{ course.intro }} Please be sure to read the pre-requisites for this course to ensure you meet the requirements.</p>
+            <button style="margin-top:10px" id="inquire-button" type="button" class="btn btn-info">Inquire</button>
+        </div>
+        <div class="col-sm-2">
+            <div class="publicdates">
+                <h3>Upcoming Dates</h3>
+                {% for row in dates %}
+                <a href="{{ url_for('inquire', token = row.id) }}"><h4>{{ row.date_part }} {{ row.month }}</h4></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-bottom:0px; padding-bottom:0px"class="jumbotron jumbowhite text-center">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>Duration:</h3>
+            <p>{{ course.duration }} Day(s)</p>
+            <h3>Pre-Requisites:</h3>
+            <p>{{ course.prereq }}</p>
+            <h3>Notes:</h3>
+            <p>{{ course.notes }}</p>
+        </div>
+        <div class="col-sm-9">
+            <h3>Course Content</h3>
+            <div id="contents"></div>
+        </div>
+    </div>
+</div>
+<script>
+    contents = "{{ course.contents|safe }}";
+    document.getElementById("contents").innerHTML = contents;
+    var divs = $("div.contentpara");
+    for(var i = 2; i < divs.length; i = i + 3) {
+        $([divs[i],divs[i-1],divs[i-2]]).wrapAll("<div class='row' />")
+    }
+    document.getElementById('inquire-button').onclick = function() {
+        window.location.href = "{{ url_for('inquire') }}";
+    };
+</script>
 {% endblock %}

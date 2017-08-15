@@ -153,10 +153,24 @@ def it(message=""):
         return "sorry course not found"
     
     else:
+        dates = db.execute("SELECT bookings.id, bookings.date, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings WHERE bookings.course = :id AND cast(date as DATE) > CURRENT_DATE AND bookings.private = 0  ORDER BY date LIMIT 4",
+                                id = request.args.get("course")
+                                )
+        for row in dates:
+            row["month"] = row["month"].title()
+            row["date_part"] = int(row["date_part"])
+        
         course = db.execute("SELECT * FROM courses WHERE id = :id",
                                 id = request.args.get("course")
                                 )
-        return render_template("it.html", course = course)
+        if course[0]["contents"] != None:
+            contents = "<div class='col-sm-4 contentpara'><h4>" + course[0]['contents'] + "</p></div>"
+            contents = contents.replace("\r\n\r\n", "</p></div><div class='col-sm-4 contentpara'><h4>")
+            contents = contents.replace(':\r\n', ':</h4><p>')
+            contents = contents.replace('\r\n', '<br>')
+            course[0]['contents'] = contents
+        
+        return render_template("it.html", course = course[0], dates = dates)
 
     
 @app.route("/excel", methods=["GET"])
