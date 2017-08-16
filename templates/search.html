@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-<div class="jumbotron jumbowhite text-center">
+<div class="jumbotron text-center">
     <h1 style="letter-spacing:4px">Search</h1>
     <form action="{{ url_for('search') }}" method="get" class="form-inline">
         <div class="input-group">
@@ -16,7 +16,7 @@
         </div>
     </form>
 </div>
-<div class="jumbotron">
+<div class="jumbotron jumbowhite">
     <h3 class="text-center">Your results</h3>
     <div class="row">
         {% for row in results %}
@@ -42,7 +42,7 @@
                         <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
                         {{ row.description }}
                     </div>
-                    <div class="gradient"></div>
+                    <div class="gradient2w"></div>
                 </div>
             </div>
         </div>
