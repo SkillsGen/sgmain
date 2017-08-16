@@ -1,3 +1,13 @@
+@media screen and (min-width:768px) and (max-width:991px) {
+    body {
+        margin-top:97px;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1199px) {
+    body {
+        margin-top:49px;
+    }
+}
 
 .navbar {
     margin-bottom: 0;
