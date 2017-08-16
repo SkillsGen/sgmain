@@ -20,13 +20,13 @@
     </ol>
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active" style="height:450px">
+        <div class="item active" style="max-height:450px">
             <img src="{{ url_for('static', filename='backgrounds/a.jpg') }}">
         </div>
-        <div class="item" style="height:450px">
+        <div class="item" style="max-height:450px">
             <img src="{{ url_for('static', filename='backgrounds/b.jpg') }}">
         </div>
-        <div class="item" style="height:450px">
+        <div class="item" style="max-height:450px">
             <img src="{{ url_for('static', filename='backgrounds/c.jpg') }}">
         </div>
         <!-- Left and right controls -->
@@ -43,25 +43,33 @@
         <div class="col-sm-3">
             <div id="it" class="course-logo">
                 <i class="fa fa-desktop"></i>
-                <h3 style="margin-top:27px">IT Courses</h3>
+                <div class="courselabelsfront">
+                    <h3>IT Courses</h3>
+                </div>
             </div>
         </div>
         <div class="col-sm-3">
             <div id="manage" class="course-logo">
                 <i class="fa fa-commenting"></i>
-                <h3>Management Skills</h3>
+                <div class="courselabelsfront">
+                    <h3>Management Skills</h3>
+                </div>
             </div>
         </div>
         <div class="col-sm-3">
             <div id="technical" class="course-logo">
                 <i class="fa fa-cogs"></i>
-                <h3 style="margin-top:27px">Technical Skills</h3>
+                <div class="courselabelsfront">
+                    <h3>Technical Skills</h3>
+                </div>
             </div>
         </div>
         <div class="col-sm-3">
             <div id="exams" class="course-logo">
                 <i class="fa fa-windows"></i>
-                <h3>MOS & MTA Exams</h3>
+                <div class="courselabelsfront">
+                    <h3>MOS & MTA Exams</h3>
+                </div>
             </div>
         </div>
     </div>

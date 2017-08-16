@@ -29,6 +29,7 @@ body {
     padding-right: 0px;
   background-color: #FFFFFF;
     height: 100%;
+    min-width: 640px;
 }
 
 h3 {
@@ -38,6 +39,7 @@ h3 {
     border-bottom: solid;
     border-width:1px;
     border-color: lightgrey;
+    font-size: calc(11px + 1vw);
 }
 
 h2 {
@@ -50,16 +52,15 @@ h2 {
 }
 
 .overlay { 
-  position:absolute;
+    position:absolute;
     background-color: black;
     opacity: 0.5;
     border-radius: 8px;
-  z-index:12;
-  top:20%;
-  left:30%;
-  width:40%;
-    min-width:400px;
-  text-align:center;
+    z-index:12;
+    top:20%;
+    left:25vw;
+    width:50vw;
+    text-align:center;
 }
 
 .ocontents {
@@ -67,12 +68,12 @@ h2 {
     opacity: 100;
 }
 .ocontents h1 {
-    font-size: 80px;
+    font-size: 10vw;
 }
 
 
 #myCarousel {
-    height: 450;
+    max-height: 450;
 }
 
 .carousel-content {
@@ -118,7 +119,14 @@ h2 {
 
 .course-logo h3{
     border-bottom: none;
-    margin-top: 17px;
+    margin-top: 20px;
+}
+
+.courselabelsfront {
+    height:80px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
 }
 
 .upcoming {
