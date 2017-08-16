@@ -40,7 +40,7 @@
         {% for row in courses %}
         <div class="col-sm-4">
             <div class="row">
-                <div class="subcourseblock">
+                <div id="{{ row.id }}" class="subcourseblock">
                     <div class="col-xs-2">
                         {% if row.icon != None and row.icon != "" %}
                             <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
@@ -54,9 +54,13 @@
                     </div>
                     <div class="gradient"></div>
                 </div>
-                
             </div>
         </div>
+        <script>
+            document.getElementById('{{ row.id }}').onclick = function() {
+                window.location.href = "{{ url_for('it', course = row.id) }}";
+            };
+        </script>
         {% endfor %}
     </div>
 </div>

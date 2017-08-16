@@ -6,16 +6,18 @@
 
 {% block main %}
 <div class="jumbotron text-center">
-    <div class="row">
-        <div class="col-sm-3">
-            {% if course.icon != None and course.icon != "" %}
-                <img class="img-responsive" src="{{ url_for('static', filename= course.icon + '-logo.png') }}">
-            {% endif %}
+    <div class="row" style="display:flex">
+        <div class="col-sm-3 noteblock">
+            <img class="img-responsive" src="{{ url_for('static', filename='icons/manage-icon.png') }}" style="max-width: 80px;margin: 0 auto">
+            <h3 style="padding-top:20px">Duration:</h3>
+            <p>{{ course.duration }} Day(s)</p>
+            <h3 style="padding-top:40px">Notes:</h3>
+            <p>{{ course.notes }}</p>
+            
         </div>
         <div class="col-sm-7">
             <h2>{{ course.name }}</h2>
-            <p>{{ course.intro }} Please be sure to read the pre-requisites for this course to ensure you meet the requirements.</p>
-            <button style="margin-top:10px" id="enquire-button" type="button" class="btn btn-info">enquire</button>
+            <p>{{ course.description }}</p>
         </div>
         <div class="col-sm-2">
             <div class="publicdates">
@@ -24,37 +26,27 @@
                 <a href="{{ url_for('enquire', token = row.id) }}"><h4>{{ row.date_part }} {{ row.month }}</h4></a>
                 {% endfor %}
             </div>
+            <button style="margin-top:10px" id="enquire-button" type="button" class="btn btn-info">Enquire</button>
         </div>
     </div>
 </div>
 <div style="margin-bottom:0px; padding-bottom:0px"class="jumbotron jumbowhite text-center">
-    <div class="row">
-        <div class="col-sm-3 itdetails">
-            <div class="">
-                <h3>Duration:</h3>
-                <p>{{ course.duration }} Day(s)</p>
-                <h3 style="padding-top:40px">Pre-Requisites:</h3>
-                <p>{{ course.prereq }}</p>
-                <h3 style="padding-top:40px">Notes:</h3>
-                <p>{{ course.notes }}</p>
-            </div>
-        </div>
-        <div class="col-sm-9" style="border-left:solid; border-color:lightgrey;border-width:1px">
-            <h3>Course Content</h3>
-            <div id="contents"></div>
-        </div>
-    </div>
+    <h3 style="border-bottom: none;margin-bottom:0px; padding-bottom: 0px">Objectives</h3>
+    <p style='margin-top:0px;padding-top:0px;padding-bottom: 10px;border-bottom: solid;border-width:1px;border-color: lightgrey;'>At the end of the course participants will be able to:</p>
+    <div id="contents"></div>
 </div>
+
 <script>
     contents = "{{ course.contents|safe }}";
     document.getElementById("contents").innerHTML = contents;
-    var divs = $("div.contentpara");
+    var divs = $("div.contentparam");
     var remainder = divs.length % 3;
     var lastrow = [];
     
     for(var i = 2; i < divs.length; i = i + 3) {
         $([divs[i],divs[i-1],divs[i-2]]).wrapAll("<div class='row' />")
     }
+    
     if(remainder != 0) {
         for(var i = remainder; i > 0; i--){
             var index = divs.length - i;

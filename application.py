@@ -146,7 +146,7 @@ def itcourses(message=""):
 def it(message=""):
     if request.args.get("course") == None:
         return "sorry course not found"
-    check = db.execute("SELECT EXISTS(SELECT name FROM courses WHERE id = :id)",
+    check = db.execute("SELECT EXISTS(SELECT name FROM courses WHERE id = :id AND type = 1)",
                             id = request.args.get("course")
                             )
     if check[0]["exists"] != True:
@@ -179,8 +179,36 @@ def excel(message=""):
     
 @app.route("/management", methods=["GET"])
 def management(message=""):
-    return render_template("management.html")
+    courses = db.execute("SELECT id, name, description FROM courses WHERE type = 2")
+    return render_template("management.html", courses = courses)
 
+@app.route("/manage-course", methods=["GET"])
+def managecourse(message=""):
+    if request.args.get("course") == None:
+        return "sorry course not found"
+    
+    check = db.execute("SELECT EXISTS(SELECT name FROM courses WHERE id = :id AND type = 2)",
+                            id = request.args.get("course")
+                            )
+    if check[0]["exists"] != True:
+        return "sorry course not found"
+    
+    else:
+        dates = db.execute("SELECT bookings.id, bookings.date, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings WHERE bookings.course = :id AND cast(date as DATE) > CURRENT_DATE AND bookings.private = 0  ORDER BY date LIMIT 4",
+                                id = request.args.get("course")
+                                )
+        for row in dates:
+            row["month"] = row["month"].title()
+            row["date_part"] = int(row["date_part"])
+            
+        course = db.execute("SELECT * FROM courses WHERE id = :id",
+                                id = request.args.get('course')
+                                )
+        if course[0]["contents"] != None:
+            contents = "<div class='col-sm-4 contentparam'><li>" + course[0]['contents'] + "</li></div>"
+            contents = contents.replace("\r\n\r\n", "</li></div><div class='col-sm-4 contentparam'><li>")
+            course[0]['contents'] = contents
+        return render_template('manage-course.html', course = course[0], dates = dates)
 
 @app.route("/technical", methods=["GET"])
 def technical(message=""):
