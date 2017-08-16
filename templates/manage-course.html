@@ -30,12 +30,11 @@
         </div>
     </div>
 </div>
-<div style="margin-bottom:0px; padding-bottom:0px"class="jumbotron jumbowhite text-center">
+<div style="margin-bottom:20px; padding-bottom:0px"class="jumbotron jumbowhite text-center">
     <h3 style="border-bottom: none;margin-bottom:0px; padding-bottom: 0px">Objectives</h3>
     <p style='margin-top:0px;padding-top:0px;padding-bottom: 10px;border-bottom: solid;border-width:1px;border-color: lightgrey;'>At the end of the course participants will be able to:</p>
     <div id="contents"></div>
 </div>
-
 <script>
     contents = "{{ course.contents|safe }}";
     document.getElementById("contents").innerHTML = contents;

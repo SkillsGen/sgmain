@@ -207,6 +207,7 @@ def managecourse(message=""):
         if course[0]["contents"] != None:
             contents = "<div class='col-sm-4 contentparam'><li>" + course[0]['contents'] + "</li></div>"
             contents = contents.replace("\r\n\r\n", "</li></div><div class='col-sm-4 contentparam'><li>")
+            contents = contents.replace("\r\n", "")
             course[0]['contents'] = contents
         return render_template('manage-course.html', course = course[0], dates = dates)
 
@@ -222,7 +223,13 @@ def exams(message=""):
 
 @app.route("/search", methods=["GET", "POST"])
 def search(message=""):
-    if request.args.get("term") != None:
+    if request.method == "POST":
+        q = request.form.get("term")
+        q = "%%" + q + "%%"
+        results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE name ILIKE :q", q=q)
+        return jsonify(results)
+        
+    elif request.args.get("term") != None:
         q = request.args.get("term")
         q = "%%" + q + "%%"
         results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE name ILIKE :q", q=q)

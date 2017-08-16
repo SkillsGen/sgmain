@@ -7,51 +7,48 @@
 {% block main %}
 <div class="jumbotron text-center">
     <h1 style="letter-spacing:4px">Search</h1>
-    <form action="{{ url_for('search') }}" method="get" class="form-inline">
-        <div class="input-group">
-            <input id="searchbox" name="term" class="form-control" size="50" placeholder="Search" required>
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-danger">Search</button>
-            </div>
-        </div>
-    </form>
+    <div style="text-align: center">
+        <input onkeydown="searchc()" type="text" id="searchbox" name="term" class="form-control" placeholder="Search" style="min-width:300px;max-width: 450px;width: 40%; display: inline-block">
+    </div>    
 </div>
 <div class="jumbotron jumbowhite">
     <h3 class="text-center">Your results</h3>
     <div class="row">
-        {% for row in results %}
-        <div class="col-sm-4">
-            <div class="row">
-                <div id="{{ row.id }}" class="subcourseblock">
-                    <div class="col-xs-2">
-                        {% if row.type == 1 %}
-                                {% if row.icon != None and row.icon != "" %}
-                                    <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
+        <div id="results">
+            {% for row in results %}
+            <div class="col-sm-4">
+                <div class="row">
+                    <div id="{{ row.id }}" class="subcourseblock">
+                        <div class="col-xs-2">
+                            {% if row.type == 1 %}
+                                    {% if row.icon != None and row.icon != "" %}
+                                        <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
+                                    {% else %}
+                                        <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
+                                    {% endif %}
+                                {% elif row.type == 2 %}
+                                    <img src="{{ url_for('static', filename='icons/Manage-icon.png') }}" style="max-height:40px">
+                                {% elif row.type == 3 %}
+                                    <img src="{{ url_for('static', filename='icons/Technical-icon.png') }}" style="max-height:40px">
                                 {% else %}
                                     <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
                                 {% endif %}
-                            {% elif row.type == 2 %}
-                                <img src="{{ url_for('static', filename='icons/Manage-icon.png') }}" style="max-height:40px">
-                            {% elif row.type == 3 %}
-                                <img src="{{ url_for('static', filename='icons/Technical-icon.png') }}" style="max-height:40px">
-                            {% else %}
-                                <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
-                            {% endif %}
+                        </div>
+                        <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
+                            <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
+                            {{ row.description }}
+                        </div>
+                        <div class="gradient2w"></div>
                     </div>
-                    <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
-                        <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
-                        {{ row.description }}
-                    </div>
-                    <div class="gradient2w"></div>
                 </div>
             </div>
+            <script>
+                document.getElementById('{{ row.id }}').onclick = function() {
+                    window.location.href = "{{ url_for('it', course = row.id) }}";
+                };
+            </script>
+            {% endfor %}
         </div>
-        <script>
-            document.getElementById('{{ row.id }}').onclick = function() {
-                window.location.href = "{{ url_for('it', course = row.id) }}";
-            };
-        </script>
-        {% endfor %}
     </div>
 </div>
 {% if term != None %}
@@ -59,4 +56,52 @@
     document.getElementById('searchbox').value = "{{ term }}"
 </script>
 {% endif %}
+<script>
+    function searchc() {
+        var queryurl = "{{url_for('search')}}";
+        var term = document.getElementById('searchbox').value;
+        if (term.length < 3) {
+            return;
+        }
+        var params = "term=" + term;
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                var resultshtml = "";
+                
+                var postresults = JSON.parse(xmlhttp.responseText);
+                if (postresults.length == 0) {
+                    document.getElementById('results').innerHTML = "<h4>Sorry We Coudn't Find Anything</h4>";
+                    return;
+                }
+                for (var key in postresults) {
+                    if (!postresults.hasOwnProperty(key)) continue;
+                    var obj = postresults[key];
+                    
+                    
+                    if (obj['type'] == 1) {
+                        if (obj['icon'] != null && obj['icon'] != "") {
+                            resultshtml += "<a class='courselink' href='/it?course=" + obj['id'] + "'><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='/static/icons/" + obj['icon'] + "-icon.png' style='max-height:40px'>";
+                        } else {
+                        resultshtml += "<a class='courselink' href='/it?course=" + obj['id'] + "'><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/IT-icon.png') }}' style='max-height:40px'>";
+                        }
+                    } else if (obj['type'] == 2) {
+                        resultshtml += "<a class='courselink' href='/manage-course?course=" + obj['id'] + "'><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/Manage-icon.png') }}' style='max-height:40px'>";
+                    } else if (obj['type'] == 3) {
+                        resultshtml += "<a class='courselink' href=''><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/Technical-icon.png') }}' style='max-height:40px'>";
+                    } else {
+                        resultshtml += "<a class='courselink' href=''><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/IT-icon.png') }}' style='max-height:40px'>";
+                    }
+                    resultshtml += "</div><div class='col-xs-10' style='max-height: 90px;overflow: hidden;'><h4 style='margin-bottom:0px;margin-top:10px'>" + obj['name'] + "</h4>";
+                    resultshtml += obj['description'] + "</div><div class='gradient2w'></div></div></div></div></a>";
+                }
+                document.getElementById('results').innerHTML = resultshtml;
+              }
+        }
+        document.getElementById('results').innerHTML = '<h4>Searching...</h4>';
+        xmlhttp.open("POST", queryurl);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(params);
+    }
+</script>
 {% endblock %}
