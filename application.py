@@ -4,12 +4,20 @@ from functools import wraps
 from tempfile import gettempdir
 from urllib.parse import urlparse
 from decimal import *
+from flask_mail import Mail, Message
 import sqlalchemy
 import os
 import psycopg2
 import gviz_api
 
 app = Flask(__name__)
+
+mail = Mail(app)
+
+app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+mail = Mail(app)
 
 url = urlparse(os.environ["DATABASE_URL"])
 conn = psycopg2.connect(
@@ -118,7 +126,19 @@ def tailored(message=""):
 @app.route("/enquire", methods=["GET", "POST"])
 def enquire(message=""):
     if request.method == 'POST':
-        data = request.form.get('enquiry')
+        
+        subject = "Website Enquiry from \"" + request.form.get("name") + "\" " + request.form.get("email")
+        
+        
+        msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
+        
+        msg.body = request.form.get("enquiry")
+        
+        try:
+            mail.send(msg)
+        except:
+            return "Email Failed"
+        
         return redirect(url_for('thankyou'))
     
     elif request.args.get("token") != None:
