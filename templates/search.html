@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron jumbowhite text-center">
+    <h1 style="letter-spacing:4px">Search</h1>
+    <form action="{{ url_for('search') }}" method="get" class="form-inline">
+        <div class="input-group">
+            <input id="searchbox" name="term" class="form-control" size="50" placeholder="Search" required>
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-danger">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="jumbotron">
+    <h3 class="text-center">Your results</h3>
+    <div class="row">
+        {% for row in results %}
+        <div class="col-sm-4">
+            <div class="row">
+                <div id="{{ row.id }}" class="subcourseblock">
+                    <div class="col-xs-2">
+                        {% if row.type == 1 %}
+                                {% if row.icon != None and row.icon != "" %}
+                                    <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
+                                {% endif %}
+                            {% elif row.type == 2 %}
+                                <img src="{{ url_for('static', filename='icons/Manage-icon.png') }}" style="max-height:40px">
+                            {% elif row.type == 3 %}
+                                <img src="{{ url_for('static', filename='icons/Technical-icon.png') }}" style="max-height:40px">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
+                            {% endif %}
+                    </div>
+                    <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
+                        <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
+                        {{ row.description }}
+                    </div>
+                    <div class="gradient"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById('{{ row.id }}').onclick = function() {
+                window.location.href = "{{ url_for('it', course = row.id) }}";
+            };
+        </script>
+        {% endfor %}
+    </div>
+</div>
+{% if term != None %}
+<script>
+    document.getElementById('searchbox').value = "{{ term }}"
+</script>
+{% endif %}
+{% endblock %}

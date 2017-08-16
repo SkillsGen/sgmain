@@ -220,6 +220,18 @@ def exams(message=""):
     return render_template("exams.html")
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search(message=""):
+    if request.args.get("term") != None:
+        q = request.args.get("term")
+        q = "%%" + q + "%%"
+        results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE name ILIKE :q", q=q)
+        return render_template("search.html", results = results, term = request.args.get("term"))
+    
+    else:
+        return render_template("search.html")
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port,debug=True)
