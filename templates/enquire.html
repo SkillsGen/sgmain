@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block main %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div class="jumbotron">
     <div class="row">
         <div class="col-sm-6 text-center">
             <h2>Enquiries</h2>
-            <p>If you're interesting in one of the courses you've seen on our website or have further requirements, then please get in contact and help us tailor our training to your exact requirements.</p>
+            <p>If you're interested in one of the courses you've seen on our website or have further requirements, then please get in contact and help us tailor our training to your exact requirements.</p>
         </div>
         <div class="col-sm-6">
             <form action="{{ url_for('enquire') }}" method="post">
@@ -35,11 +36,34 @@
                     <textarea class="form-control" id="enquiry" name="enquiry" rows="6" placeholder="Your enquiry"></textarea>
                     {% endif %}
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="row text-center">
+                    <div class="col-md-7">
+                        <div class="g-recaptcha" data-sitekey="6LeKMC0UAAAAAFOtys0lLpqqtBqS6PCctRXviQ0P" data-callback="submitbut()"></div>
+                        {% if captcha == "failed" %}
+                        <p class="recaptcha-error-message">Please fill in the reCAPTCHA</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-5">
+                        <br>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Submit Enquiry">
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+{% if captcha == "failed" %}
+<script>
+    document.getElementById('name').value = "{{ enquiry.name }}";
+    document.getElementById('email').value = "{{ enquiry.email }}";
+    document.getElementById('phone').value = "{{ enquiry.phone }}";
+    document.getElementById('enquiry').value = "{{ enquiry.enquiry }}";
+</script>
+{% endif %}
+<script>
+    document.getElementById('submitbutton').disabled = true;
+    function submitbut(response) {
+        document.getElementById('submitbutton').disabled = false;
+    }
+</script>
 {% endblock %}

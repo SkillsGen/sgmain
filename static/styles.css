@@ -290,6 +290,12 @@ h2 {
     padding-top:10px;
 }
 
+.recaptcha-error-message {
+    color:#dd4b39;
+    font-family: Arial;
+    font-size: 5px;
+}
+
 #map {
     height: 400px;
     width: 100%;

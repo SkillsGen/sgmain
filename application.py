@@ -5,6 +5,8 @@ from tempfile import gettempdir
 from urllib.parse import urlparse
 from decimal import *
 from flask_mail import Mail, Message
+import json
+import requests
 import sqlalchemy
 import os
 import psycopg2
@@ -127,19 +129,42 @@ def tailored(message=""):
 def enquire(message=""):
     if request.method == 'POST':
         
-        subject = "Website Enquiry from \"" + request.form.get("name") + "\" \"" + request.form.get("email") + "\" \"" + request.form.get("phone") + "\""
+        response = request.form.get("g-recaptcha-response")
         
+        enquiry = {'name': request.form.get('name'),
+                   'email': request.form.get('email'),
+                   'phone': request.form.get('phone'),
+                   'enquiry': request.form.get('enquiry')
+                  }
         
-        msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
+        if response == "" or response == None:
+            return render_template('enquire.html', booking = None, enquiry = enquiry, captcha = "failed")
         
-        msg.body = request.form.get("enquiry")
+        captchadata = {'secret': os.environ["RECAPTCHA_SECRET"],
+                       'response': response,
+                      }
         
-        try:
-            mail.send(msg)
-        except:
-            return "Email Failed"
+        apiresponse = requests.post('https://www.google.com/recaptcha/api/siteverify', captchadata)
         
-        return redirect(url_for('thankyou'))
+        temp = json.loads(apiresponse.text)
+        if temp['success'] == True:
+            
+            subject = "Website Enquiry from \"" + request.form.get("name") + "\" \"" + request.form.get("email") + "\" \"" + request.form.get("phone") + "\""
+            
+            
+            msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
+            
+            msg.body = request.form.get("enquiry")
+            
+            try:
+                mail.send(msg)
+            except:
+                return render_template("apologies.html")
+            
+            return redirect(url_for('thankyou'))
+        
+        else:
+            return render_template('enquire.html', booking = None, enquiry = enquiry, captcha = "failed")
     
     elif request.args.get("token") != None:
         booking = db.execute("SELECT bookings.date, courses.name AS course FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.id = :id",
@@ -155,6 +180,9 @@ def enquire(message=""):
 def thankyou(message=""):
     return render_template("thankyou.html")
 
+@app.route("/apologies", methods=["GET"])
+def apologies(message=""):
+    return render_template("apologies.html")
 
 @app.route("/it-courses", methods=["GET"])
 def itcourses(message=""):
