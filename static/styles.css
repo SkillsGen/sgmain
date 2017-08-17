@@ -130,8 +130,8 @@ h2 {
 }
 
 .upcoming {
-    border: solid;
-    border-color: black;
+    border: dashed;
+    border-color: grey;
     border-radius: 10px;
     border-width: 3px;
     background-color: white;
