@@ -274,13 +274,13 @@ def search(message=""):
     if request.method == "POST":
         q = request.form.get("term")
         q = "%%" + q + "%%"
-        results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE name ILIKE :q", q=q)
+        results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE (name ILIKE :q AND type = 1) OR (name ILIKE :q AND type = 2)", q=q)
         return jsonify(results)
         
     elif request.args.get("term") != None:
         q = request.args.get("term")
         q = "%%" + q + "%%"
-        results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE name ILIKE :q", q=q)
+        results = db.execute("SELECT id, name, description, type, icon FROM courses WHERE (name ILIKE :q AND type = 1) OR (name ILIKE :q AND type = 2)", q=q)
         return render_template("search.html", results = results, term = request.args.get("term"))
     
     else:
