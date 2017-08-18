@@ -45,7 +45,7 @@
                         {% if row.icon != None and row.icon != "" %}
                             <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
                         {% else %}
-                            <img src="{{ url_for('static', filename='icons/IT-icon.png') }}">
+                            <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
                         {% endif %}
                     </div>
                     <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
