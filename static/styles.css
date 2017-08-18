@@ -211,6 +211,25 @@ h2 {
     cursor: pointer;
 }
 
+.upcoming2 {
+    margin-left: 5%;
+    border-top: none;
+    border-bottom: none;
+    border-width: 1px;
+    border-color: grey;
+    height: 70px;
+    display:flex;
+    align-items:center;
+    cursor: pointer;
+}
+
+.upcoming2 p {
+    font-family: arial;
+    font-weight: normal;
+    font-size:17px;
+    
+}
+
 .gradient {
     position:absolute;
     z-index:2;

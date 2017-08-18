@@ -22,9 +22,13 @@
         <div class="col-sm-2">
             <div class="publicdates">
                 <h3>Upcoming Dates</h3>
+                {% if dates|length == 0 %}
+                <p>Sorry there are no scheduled dates for this course in the near future.</p>
+                {% else %}
                 {% for row in dates %}
                 <a href="{{ url_for('enquire', token = row.id) }}"><h4>{{ row.date_part }} {{ row.month }}</h4></a>
                 {% endfor %}
+                {% endif %}
             </div>
             <button style="margin-top:10px" id="enquire-button" type="button" class="btn btn-info">Enquire</button>
         </div>

@@ -88,7 +88,7 @@
         <div class="col-md-5">
             <h3 style="margin-top:0px; margin-bottom: 30px;margin-right: -27px">Upcoming Public Courses</h3>
             {% for row in upcoming %}
-                <div class="upcoming">
+                    <div class="upcoming">
                     <div class="row">
                         <div class="col-xs-2">
                             {% if row.type == 1 %}
@@ -276,7 +276,7 @@
             </div>
         </div>
     </div>
-    <div style="padding-top:10px;" class="row">
+    <div style="padding-top:30px;" class="row">
         <button id="tailored-button" type="button" class="btn btn-info">Learn About Our Bespoke Options</button>
     </div>
 </div>
@@ -296,7 +296,7 @@
             <img class="img-responsive partner" src="{{ url_for('static', filename='companies/wfs-logo.png') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='companies/nhs-logo.jpg') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='companies/calumet-logo.png') }}">
-            <div style="padding-top:50px;" class="row">
+            <div style="padding-top:60px" class="row">
                 <button id="tailored-button" type="button" class="btn btn-info">View More of our Customers</button>
             </div>
         </div>
