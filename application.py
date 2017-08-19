@@ -117,13 +117,16 @@ def index(message=""):
     
     return render_template("index.html", upcoming = upcoming)
 
+
 @app.route("/about", methods=["GET"])
 def about(message=""):
     return render_template("about.html")
 
+
 @app.route("/tailored", methods=["GET"])
 def tailored(message=""):
     return render_template("tailored.html")
+
 
 @app.route("/enquire", methods=["GET", "POST"])
 def enquire(message=""):
@@ -180,15 +183,18 @@ def enquire(message=""):
 def thankyou(message=""):
     return render_template("thankyou.html")
 
+
 @app.route("/apologies", methods=["GET"])
 def apologies(message=""):
     return render_template("apologies.html")
+
 
 @app.route("/it-courses", methods=["GET"])
 def itcourses(message=""):
     courses = db.execute("SELECT id, name, description, icon FROM courses WHERE type = 1")
     
     return render_template("it-courses.html", courses = courses)
+
 
 @app.route("/it", methods=["GET"])
 def it(message=""):
@@ -224,11 +230,13 @@ def it(message=""):
 @app.route("/excel", methods=["GET"])
 def excel(message=""):
     return render_template("excel.html")
-    
+
+
 @app.route("/management", methods=["GET"])
 def management(message=""):
     courses = db.execute("SELECT id, name, description FROM courses WHERE type = 2")
     return render_template("management.html", courses = courses)
+
 
 @app.route("/manage-course", methods=["GET"])
 def managecourse(message=""):
@@ -259,6 +267,7 @@ def managecourse(message=""):
             course[0]['contents'] = contents
         return render_template('manage-course.html', course = course[0], dates = dates)
 
+    
 @app.route("/technical", methods=["GET"])
 def technical(message=""):
     return render_template("technical.html")

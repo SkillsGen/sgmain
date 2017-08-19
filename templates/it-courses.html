@@ -15,21 +15,21 @@
             <div class="courseblock">
                 <img class="img-responsive" src="{{ url_for('static', filename='Excel-logo.png') }}">
                 <h3>Microsoft Excel</h3>
-                <p>From our <b>Using Excel Level One</b> introductory course all the way to the ultimate <b>Excel For Experts</b> course. Our Microsoft Excel courses are the best way to learn this powerful tool and really make it work for.</p>
+                <p>From our <a href="{{ url_for('it', course = 4 )}}">Using Excel Level One</a> introductory course all the way to the ultimate <a href="{{ url_for('it', course = 9 )}}">Excel For Experts</a> course. Our Microsoft Excel courses are the best way to learn this powerful tool and really make it work for.</p>
             </div>
         </div>
         <div id="project" class="col-sm-4">
             <div class="courseblock">
                 <img class="img-responsive" src="{{ url_for('static', filename='project-logo.png') }}">
                 <h3>Microsoft Project</h3>
-                <p>Our Microsoft Project courses will get you up to speed on using this popular tool for creating, maintaining and tracking your plans and projects.</p>
+                <p>Our <a href="{{ url_for('search', term = 'project' )}}">Microsoft Project courses</a> will get you up to speed on using this popular tool for creating, maintaining and tracking your plans and projects.</p>
             </div>
         </div>
         <div id="project" class="col-sm-4">
             <div class="courseblock">
                 <img class="img-responsive" src="{{ url_for('static', filename='PowerPoint-logo.png') }}">
                 <h3>Microsoft PowerPoint</h3>
-                <p>Our Microsoft PowerPoint courses will give you the technical skills and confidence required to give great presentations with this popular software.</p>
+                <p>Our <a href="{{ url_for('search', term = 'project' )}}">Microsoft PowerPoint courses</a> will give you the technical skills and confidence required to give great presentations with this popular software.</p>
             </div>
         </div>
     </div>
@@ -61,9 +61,4 @@
         {% endfor %}
     </div>
 </div>
-<script>
-    document.getElementById('excel').onclick = function() {
-        window.location.href = "{{ url_for('excel') }}";
-    };
-</script>
 {% endblock %}
