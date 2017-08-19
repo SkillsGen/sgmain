@@ -144,7 +144,7 @@ h2 {
 .upcoming img {
     position:absolute;
     margin-top: -3px;
-    margin-left: -28px;
+    left: 12px;
     height: 71px;
     border-radius: 10px;
     border-top-right-radius: 0px;
