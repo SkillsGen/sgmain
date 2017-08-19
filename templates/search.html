@@ -71,7 +71,7 @@
                 
                 var postresults = JSON.parse(xmlhttp.responseText);
                 if (postresults.length == 0) {
-                    document.getElementById('results').innerHTML = "<h4>Sorry We Coudn't Find Anything</h4>";
+                    document.getElementById('results').innerHTML = "<h4 style='text-align:center;color:darkgrey'>Sorry We Coudn't Find Anything</h4>";
                     return;
                 }
                 for (var key in postresults) {
@@ -98,7 +98,7 @@
                 document.getElementById('results').innerHTML = resultshtml;
               }
         }
-        document.getElementById('results').innerHTML = '<h4>Searching...</h4>';
+        document.getElementById('results').innerHTML = "<h4 style='text-align:center;color:darkgrey'>Searching...</h4>";
         xmlhttp.open("POST", queryurl);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send(params);
