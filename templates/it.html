@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-3">
             {% if course.icon != None and course.icon != "" %}
-                <img class="img-responsive" src="{{ url_for('static', filename= course.icon + '-logo.png') }}">
+                <img class="img-responsive" src="{{ url_for('static', filename='logos/' + course.icon + '-logo.png') }}">
             {% endif %}
         </div>
         <div class="col-sm-7">

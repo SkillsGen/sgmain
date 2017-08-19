@@ -181,14 +181,16 @@ h2 {
 }
 
 .courseblock {
+    background-color: white;
     padding-top:20px;
-    border: solid;
+    border: dashed;
     border-radius: 10px;
     border-width: 3px;
     border-color: lightgrey;
     padding-left:10px;
     padding-right:10px;
-    height: 350px;
+    height: 330px;
+    margin-bottom:20px;
 }
 
 .courseblock b {
