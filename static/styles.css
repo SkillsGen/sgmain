@@ -288,6 +288,7 @@ h2 {
 
 .courselink:hover {
     color:black;
+    text-decoration:none;
 }
 
 .noteblock {

@@ -106,12 +106,21 @@
                             {% endif %}
                         </div>
                         <div class="col-xs-9">
-                            <div class="row">
-                                {{ row.course }}
-                            </div>
-                            <div class="row">
-                                {{ row.day }} {{ row.month }} {{ row.date_part}}
-                            </div>    
+                            {% if row.type == 1 %}
+                                <a class="courselink" href="{{ url_for('it', course = row.courseid) }}">
+                            {% elif row.type == 2 %}
+                                <a class="courselink" href="{{ url_for('managecourse', course = row.courseid) }}">
+                            {% else %}
+                                <a class="courselink" href="">
+                            {% endif %}
+                                    <div class="row">
+
+                                        {{ row.name }}
+                                    </div>
+                                    <div class="row">
+                                        {{ row.day }} {{ row.month }} {{ row.date_part}}
+                                    </div>
+                                </a>
                         </div>
                         <div class="col-xs-1">
                             <a href="{{ url_for('enquire', token = row.id) }}">
