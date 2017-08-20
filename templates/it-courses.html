@@ -36,14 +36,14 @@
 <div class="jumbotron jumbowhite">
     <h2 class="text-center" style="border:none;padding-bottom: 20px">The Full List</h2>
     {% for cat in cats %}
-    <div class="row">
+    <div class="row" style="padding-top:40px">
         <div class="col-sm-1">
             <img class="img-responsive" src="{{ url_for('static', filename='logos/' + cat.icon + '-logo.png') }}">
         </div>
         <div class="col-sm-11">
-            <h3>{{ cat.icon }} Courses:</h3>
+            <h3 >{{ cat.category }} Courses:</h3>
             {% for row in courses %}
-            {% if row.icon == cat.icon %}
+            {% if row.category == cat.category %}
             <div class="col-sm-4">
                 <div class="row">
                     <a class='courselink' href="{{ url_for('it', course = row.id) }}">
@@ -76,7 +76,7 @@
         <div class="col-sm-11">
             <h3>Other Courses:</h3>
             {% for row in courses %}
-            {% if row.icon == '' %}
+            {% if row.category == '' or row.category == None %}
             <div class="col-sm-4">
                 <div class="row">
                     <a class='courselink' href="{{ url_for('it', course = row.id) }}">
