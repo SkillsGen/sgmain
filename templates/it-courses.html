@@ -34,30 +34,72 @@
     </div>
 </div>
 <div class="jumbotron jumbowhite">
-    <h3 class="text-center">The Full List</h3>
+    <h2 class="text-center" style="border:none;padding-bottom: 20px">The Full List</h2>
+    {% for cat in cats %}
     <div class="row">
-        {% for row in courses %}
-        <div class="col-sm-4">
-            <div class="row">
-                <a class='courselink' href="{{ url_for('it', course = row.id) }}">
-                    <div id="{{ row.id }}" class="subcourseblock">
-                        <div class="col-xs-2">
-                            {% if row.icon != None and row.icon != "" %}
-                                <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
-                            {% else %}
-                                <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
-                            {% endif %}
-                        </div>
-                        <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
-                            <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
-                            {{ row.description }}
-                        </div>
-                        <div class="gradient2w"></div>
-                    </div>
-                </a>
-            </div>
+        <div class="col-sm-1">
+            <img class="img-responsive" src="{{ url_for('static', filename='logos/' + cat.icon + '-logo.png') }}">
         </div>
-        {% endfor %}
+        <div class="col-sm-11">
+            <h3>{{ cat.icon }} Courses:</h3>
+            {% for row in courses %}
+            {% if row.icon == cat.icon %}
+            <div class="col-sm-4">
+                <div class="row">
+                    <a class='courselink' href="{{ url_for('it', course = row.id) }}">
+                        <div id="{{ row.id }}" class="subcourseblock">
+                            <div class="col-xs-2">
+                                {% if row.icon != None and row.icon != "" %}
+                                    <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
+                                {% endif %}
+                            </div>
+                            <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
+                                <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
+                                {{ row.description }}
+                            </div>
+                            <div class="gradient2w"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-sm-1">
+            <img class="img-responsive" src="{{ url_for('static', filename='icons/IT-icon.png') }}">
+        </div>
+        <div class="col-sm-11">
+            <h3>Other Courses:</h3>
+            {% for row in courses %}
+            {% if row.icon == '' %}
+            <div class="col-sm-4">
+                <div class="row">
+                    <a class='courselink' href="{{ url_for('it', course = row.id) }}">
+                        <div id="{{ row.id }}" class="subcourseblock">
+                            <div class="col-xs-2">
+                                {% if row.icon != None and row.icon != "" %}
+                                    <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
+                                {% endif %}
+                            </div>
+                            <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
+                                <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
+                                {{ row.description }}
+                            </div>
+                            <div class="gradient2w"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div> 
     </div>
 </div>
 {% endblock %}
