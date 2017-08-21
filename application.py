@@ -220,8 +220,8 @@ def it(message=""):
                                 id = request.args.get("course")
                                 )
         if course[0]["contents"] != None:
-            contents = "<div class='col-sm-4 contentpara'><h4>" + course[0]['contents'] + "</p></div>"
-            contents = contents.replace("\r\n\r\n", "</p></div><div class='col-sm-4 contentpara'><h4>")
+            contents = "<div class='col-sm-4 contentparam'><h4>" + course[0]['contents'] + "</p></div>"
+            contents = contents.replace("\r\n\r\n", "</p></div><div class='col-sm-4 contentparam'><h4>")
             contents = contents.replace(':\r\n', ':</h4><p>')
             contents = contents.replace('\r\n', '<br>')
             course[0]['contents'] = contents
@@ -297,6 +297,10 @@ def search(message=""):
     else:
         return render_template("search.html")
 
+    
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
