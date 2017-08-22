@@ -37,7 +37,9 @@ body {
     min-width: 640px;
     
 }
-
+.img-width {
+    width:100%;
+}
 h3 {
     letter-spacing: 4px;
     margin-top:0px;
