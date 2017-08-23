@@ -191,12 +191,16 @@ def apologies(message=""):
 
 @app.route("/it-courses", methods=["GET"])
 def itcourses(message=""):
-    cats = db.execute("SELECT DISTINCT category, icon FROM courses WHERE type = 1 AND category != '' and category != 'NULL' ORDER BY category")
+    cats = db.execute("SELECT DISTINCT category, icon FROM courses WHERE type = 1 AND category != '' and category != 'NULL' and category != 'Bitesize' ORDER BY category")
     
     courses = db.execute("SELECT id, name, description, icon, category FROM courses WHERE type = 1")
     
     return render_template("it-courses.html", courses = courses, cats = cats)
 
+@app.route("/bitesize", methods=["GET"])
+def bitesize(message=""):
+    courses = db.execute("SELECT id, name, description, icon FROM courses WHERE category = 'Bitesize' ORDER BY name")
+    return render_template("bitesize.html", courses = courses)
 
 @app.route("/it", methods=["GET"])
 def it(message=""):

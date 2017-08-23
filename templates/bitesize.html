@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Skillsgen BiteSize
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron text-center">
+    <h2>SkillsGen BiteSize Courses:</h2>
+    <p>Our BiteSize courses are quick and to the point workshops that can get you up to speed on the software you use the most. They're only about 2 hours long so you fit one in on a long lunch or pick a couple for an afternoon.</p>
+</div>
+<div class="jumbotron jumbowhite">
+    {% for row in courses %}
+        <div class="col-sm-4">
+            <div class="row">
+                <a class='courselink' href="{{ url_for('it', course = row.id) }}">
+                    <div id="{{ row.id }}" class="subcourseblock">
+                        <div class="col-xs-2">
+                            {% if row.icon != None and row.icon != "" %}
+                                <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:40px">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
+                            {% endif %}
+                        </div>
+                        <div class="col-xs-10" style="max-height: 90px;overflow: hidden;">
+                            <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
+                            {{ row.description }}
+                        </div>
+                        <div class="gradient2w"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

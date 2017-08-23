@@ -5,11 +5,14 @@
 {% endblock %}
 
 {% block main %}
-<div class="jumbotron">
-    <h3 class="text-center">Management Skills</h3>
+<div class="jumbotron text-center">
+    <h2 class="text-center">Management Skills</h2>
+    <p>Some blurb here.</p>
+</div>
+<div class="jumbotron jumbowhite">
     <div class="row">
         {% for row in courses %}
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="row">
                 <div id="{{ row.id }}" class="submcourseblock">
                     <div class="col-xs-2">
@@ -19,7 +22,7 @@
                         <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
                         {{ row.description }}
                     </div>
-                    <div class="mgradient"></div>
+                    <div class="gradient2w"></div>
                 </div>
             </div>
         </div>

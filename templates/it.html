@@ -37,7 +37,11 @@
         <div class="col-sm-3 itdetails">
             <div class="">
                 <h3>Duration:</h3>
-                <p>{{ course.duration }} Day(s)</p>
+                {% if course.category == "Bitesize" %}
+                    <p>{{ course.duration }} Hours</p>
+                {% else %}
+                    <p>{{ course.duration }} Day(s)</p>
+                {% endif %}
                 <h3 style="padding-top:40px">Pre-Requisites:</h3>
                 <p>{{ course.prereq }}</p>
                 <h3 style="padding-top:40px">Notes:</h3>
