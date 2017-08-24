@@ -7,7 +7,7 @@
 {% block main %}
 <div class="jumbotron text-center">
     <h2 class="text-center">Management Skills</h2>
-    <p>Some blurb here.</p>
+    <p>Management skills or "soft skills" are a crucial part of any organisation's success. Any organisation is at it's core "people interacting with people". And these skills, including social graces, communication skills, language skills and leadership skills play a role in every interaction within your organisation and without, from managers to employees and employees to customers. Studies by Stanford Research Institute and the Carnegie Mellon Foundation among Fortune 500 CEOs established that 75% of long term job success resulted from soft skills and only 25% from technical skills (Sinha, 2008). Hence, soft skills are as important as cognitive/technical skills (John, 2009; Zehr, 1998).</p>
 </div>
 <div class="jumbotron jumbowhite">
     <div class="row">
@@ -15,11 +15,11 @@
         <div class="col-sm-6">
             <div class="row">
                 <div id="{{ row.id }}" class="submcourseblock">
-                    <div class="col-xs-2">
-                        <img src="{{ url_for('static', filename='icons/manage-icon.png') }}" style="margin-top:10px;max-height:50px">
+                    <div class="col-xs-2 text-center">
+                        <i class="fa fa-handshake-o fa-4x" style="padding-top: 50px;color: darkblue"></i>
                     </div>
                     <div class="col-xs-10" style="max-height: 180px;overflow: hidden;">
-                        <h4 style="margin-bottom:0px;margin-top:10px">{{ row.name }}</h4>
+                        <h4 style="margin-bottom:0px;margin-top:10px;border-bottom: solid; border-width: 1px">{{ row.name }}</h4>
                         {{ row.description }}
                     </div>
                     <div class="gradient2w"></div>
