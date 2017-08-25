@@ -27,7 +27,7 @@
                                         <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:40px">
                                     {% endif %}
                                 {% elif row.type == 2 %}
-                                    <img src="{{ url_for('static', filename='icons/manage-icon.png') }}" style="max-height:40px">
+                                    <i class='fa fa-handshake-o fa-4x' style='padding-top: 50px;color: darkblue'></i>
                                 {% elif row.type == 3 %}
                                     <img src="{{ url_for('static', filename='icons/Technical-icon.png') }}" style="max-height:40px">
                                 {% else %}
@@ -86,7 +86,7 @@
                         resultshtml += "<a class='courselink' href='/it?course=" + obj['id'] + "'><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/IT-icon.png') }}' style='max-height:40px'>";
                         }
                     } else if (obj['type'] == 2) {
-                        resultshtml += "<a class='courselink' href='/manage-course?course=" + obj['id'] + "'><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/Manage-icon.png') }}' style='max-height:40px'>";
+                        resultshtml += "<a class='courselink' href='/manage-course?course=" + obj['id'] + "'><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2 text-center'><i class='fa fa-handshake-o fa-2x' style='padding-top: 0px;color: darkblue'></i>";
                     } else if (obj['type'] == 3) {
                         resultshtml += "<a class='courselink' href=''><div class='col-sm-4'><div class='row'><div id='" + obj['id'] + "'class='subcourseblock'><div class='col-xs-2'><img src='{{ url_for('static', filename='icons/Technical-icon.png') }}' style='max-height:40px'>";
                     } else {
