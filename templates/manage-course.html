@@ -7,7 +7,7 @@
 {% block main %}
 <div class="jumbotron text-center">
     <div class="row" style="display:flex">
-        <div class="col-sm-3 noteblock">
+        <div class="col-sm-2 noteblock">
             <img class="img-responsive" src="{{ url_for('static', filename='icons/manage-icon.png') }}" style="max-width: 80px;margin: 0 auto">
             <h3 style="padding-top:20px">Duration:</h3>
             <p>{{ course.duration }} Day(s)</p>
@@ -15,7 +15,7 @@
             <p>{{ course.notes }}</p>
             
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-8">
             <h2>{{ course.name }}</h2>
             <p>{{ course.description }}</p>
         </div>
