@@ -94,7 +94,7 @@ Session(app)
 @app.route("/", methods=["GET"])
 def index(message=""):
     
-    upcoming = db.execute("SELECT bookings.id, bookings.course AS courseid, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
+    upcoming = db.execute("SELECT bookings.id, bookings.course AS courseid, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
     
     for row in upcoming:
         row["day"] = row["day"].title()
@@ -140,7 +140,6 @@ def enquire(message=""):
             
             subject = "Website Enquiry from \"" + request.form.get("name") + "\" \"" + request.form.get("email") + "\" \"" + request.form.get("phone") + "\""
             
-            
             msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
             
             msg.body = request.form.get("enquiry")
@@ -183,10 +182,12 @@ def itcourses(message=""):
     
     return render_template("it-courses.html", courses = courses, cats = cats)
 
+
 @app.route("/bitesize", methods=["GET"])
 def bitesize(message=""):
     courses = db.execute("SELECT id, name, description, icon FROM courses WHERE category = 'Bitesize' ORDER BY name")
     return render_template("bitesize.html", courses = courses)
+
 
 @app.route("/it", methods=["GET"])
 def it(message=""):

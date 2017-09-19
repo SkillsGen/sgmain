@@ -108,6 +108,9 @@
             </div>
         </div>
     </div>
+    <div class="row text-center">
+        <button style="margin-top:0px" id="enquire-button" type="button" class="btn btn-info">Enquire</button>
+    </div>
 </div>
 <div class="jumbotron">
     <div class="row">
@@ -155,7 +158,15 @@
             </div>
         </div>
     </div>
+    <div class="row text-center">
+        <button style="margin-top:0px" id="enquire-button" type="button" class="btn btn-info">Enquire</button>
+    </div>
 </div>
+<script>
+    document.getElementById('enquire-button').onclick = function() {
+        window.location.href = "{{ url_for('enquire') }}";
+    };
+</script>
 <ul>
                         
                     </ul>          
