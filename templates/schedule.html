@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SkillsGen full schedule
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron">
+    <h2 class="text-center">SkillsGen Full Schedule</h2>
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    {% for row in years %}
+    {% set year = row.year %}
+        <h2 style="border:none;padding-top:20px;padding-bottom:5px">{{ row.year }}</h2>
+        {% for row in months if row.year == year %}
+        {% set month = row.month %}
+            <h4 style="padding-left: 10px">{{ row.month }}</h4>
+            <table class="table table-bordered table-striped text-center" style="margin-left:20px">
+                {% for row in schedule if row.month == month and row.year == year %}
+                    <tr>
+                        <td class="col-xs-1">
+                            {% if row.type == 1 %}
+                                {% if row.icon != None and row.icon != "" %}
+                                    <img src="{{ url_for('static', filename='icons/' + row.icon + '-icon.png') }}" style="max-height:20px">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:20px">
+                                {% endif %}
+                            {% elif row.type == 2 %}
+                                <img src="{{ url_for('static', filename='icons/manage-icon.png') }}" style="max-height:20px">
+                            {% elif row.type == 3 %}
+                                <img src="{{ url_for('static', filename='icons/Technical-icon.png') }}" style="max-height:20px">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='icons/IT-icon.png') }}" style="max-height:20px">
+                            {% endif %}
+                        </td>
+                        <td class="col-xs-1">{{ row.daynum }}</td>
+                        <td class="col-xs-1">{{ row.day }}</td>
+                        <td class="col-xs-6" style="text-align:left">
+                            {% if row.type == 1 %}
+                                <a href="{{ url_for('it', course = row.course )}}">{{ row.name }}</a>
+                            {% elif row.type == 2 %}
+                                <a href="{{ url_for('managecourse', course = row.course) }}">{{ row.name }}</a>
+                            {% else %}
+                                {{ row.name }}
+                            {% endif %}
+                        </td>
+                        
+                        <td class="col-xs-2">{{ row.duration }} Day(s)</td>
+                        <td class="col-xs-1">
+                            <a href="{{ url_for('enquire', token = row.course) }}">Enquire</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    {% endfor %}
+        </div>
+    <div class="col-md-1"></div>
+        </div>
+</div>
+{% endblock %}

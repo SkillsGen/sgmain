@@ -28,7 +28,7 @@
             <img src="{{ url_for('static', filename='backgrounds/b.jpg') }}">
         </div>
         <div class="item" style="max-height:450px">
-            <img src="{{ url_for('static', filename='backgrounds/c.jpg') }}">
+            <img src="{{ url_for('static', filename='backgrounds/c.png') }}">
         </div>
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -131,6 +131,9 @@
                     </div>        
                 </div>
             {% endfor %}
+                <div style="padding-top:5px;padding-left:30px" class="row">
+                <button onclick="location.href='{{ url_for('schedule') }}'" type="button" class="btn btn-info">View Our Full Schedule</button>
+    </div>
         </div>
     </div>
 </div>
@@ -292,7 +295,7 @@
     <div class="row text-center">
         <div class="col-sm-5">
             <h3 style="border-bottom: none; padding-bottom:0px">Tweets from @SKILLSGENLTD</h3>
-            <a class="twitter-timeline" data-chrome="noheader nofooter transparent" data-width="450" data-height="600" data-tweet-limit="2" data-dnt="true" href="https://twitter.com/Skillsgenltd">Tweets by Skillsgenltd</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" data-chrome="noheader nofooter transparent" data-width="450" data-height="900" data-tweet-limit="3" data-dnt="true" href="https://twitter.com/Skillsgenltd">Tweets by Skillsgenltd</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <div class="col-sm-7">
             <h3>Great Companies Use SkillsGen</h3>
