@@ -103,18 +103,27 @@ def index(message=""):
     
     return render_template("index.html", upcoming = upcoming)
 
-@app.route("/schedule", methods=["GET", "POST"])
+@app.route("/schedule", methods=["GET", "POST"]) #Catastrophically ineffecient
 def schedule(message=""):
+    if request.method != "POST":
+        schedule = db.execute("SELECT bookings.id, bookings.course, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, courses.duration, to_char(CAST(date as DATE), 'Day') AS day, to_char(CAST(date as DATE), 'yyyy') AS year, to_char(CAST(date as DATE), 'Month') AS month, to_char(EXTRACT(day FROM CAST(date as DATE)), '99') as daynum FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date")
+
+        years = db.execute("SELECT DISTINCT to_char(CAST(date as DATE), 'yyyy') AS year FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY year")
+
+        months = db.execute("SELECT DISTINCT ON (EXTRACT(month FROM cast(date as DATE)), EXTRACT(year FROM cast(date as DATE))) to_char(CAST(date as DATE), 'Month') AS month, to_char(CAST(date as DATE), 'yyyy') AS year FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY EXTRACT(month FROM cast(date as DATE))")
+
+        return render_template("schedule.html", schedule = schedule, years=years, months=months)
     
-    schedule = db.execute("SELECT bookings.course, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, courses.duration, to_char(CAST(date as DATE), 'Day') AS day, to_char(CAST(date as DATE), 'yyyy') AS year, to_char(CAST(date as DATE), 'Month') AS month, to_char(EXTRACT(day FROM CAST(date as DATE)), '99') as daynum FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date")
-    
-    years = db.execute("SELECT DISTINCT to_char(CAST(date as DATE), 'yyyy') AS year FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY year")
-    
-    months = db.execute("SELECT DISTINCT ON (EXTRACT(month FROM cast(date as DATE)), EXTRACT(year FROM cast(date as DATE))) to_char(CAST(date as DATE), 'Month') AS month, to_char(CAST(date as DATE), 'yyyy') AS year FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY EXTRACT(month FROM cast(date as DATE))")
-    
-    return render_template("schedule.html", schedule = schedule, years=years, months=months)
+    else:
+        schedule = db.execute("SELECT bookings.id, bookings.course, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, courses.duration, to_char(CAST(date as DATE), 'Day') AS day, to_char(CAST(date as DATE), 'yyyy') AS year, to_char(CAST(date as DATE), 'Month') AS month, to_char(EXTRACT(day FROM CAST(date as DATE)), '99') as daynum FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date")
+        
+        return jsonify(schedule)
     
     
+@app.route("/schedule2", methods=["GET"])
+def schedule2(message=""):
+    return render_template("schedule2.html")
+
 @app.route("/about", methods=["GET"])
 def about(message=""):
     return render_template("about.html")

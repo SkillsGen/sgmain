@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SkillsGen Full Schedule
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron">
+    <h2 class="text-center">SkillsGen Full Schedule</h2>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+        <div id="schedule"></div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<script>
+    var queryurl = "{{url_for('schedule')}}";
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("POST", queryurl);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            var postresults = JSON.parse(xmlhttp.responseText);
+            
+            var month = "";
+            var year = 0;
+            for (var key in postresults) {
+                if (!postresults.hasOwnProperty(key)) continue;
+                var obj = postresults[key];
+                
+                if (obj['year'] != year) {
+                    year = obj['year'];
+                    var yeardiv = document.createElement('h2');
+                    yeardiv.id = parseInt(year);
+                    yeardiv.style.border = "none";
+                    yeardiv.style.paddingTop = "20px";
+                    yeardiv.style.paddingBottom = "5px";
+                    document.getElementById('schedule').appendChild(yeardiv);
+                    document.getElementById(year).innerHTML = parseInt(year);
+                }
+                
+                if (obj['month'] != month) {
+                    month = obj['month'];
+                    var monthdiv = document.createElement('h4');
+                    monthdiv.id = month + year + "header";
+                    monthdiv.style.paddingLeft = "10px";
+                    document.getElementById('schedule').appendChild(monthdiv);
+                    document.getElementById(month + year + "header").innerHTML = month;
+                    
+                    var monthtable = document.createElement('table');
+                    monthtable.id = month + year;
+                    monthtable.style.marginLeft = "20px";
+                    monthtable.classList.add("table", "table-striped", "table-bordered", "text-center");
+                    document.getElementById('schedule').appendChild(monthtable); 
+                    var tbody = document.createElement('tbody');
+                    tbody.id = month + year + "tbody";
+                    document.getElementById(month + year).appendChild(tbody); 
+                }
+                localtable = month + year + "tbody";
+                var scheduleitem = document.createElement('tr');
+                scheduleitem.id = obj['id'];
+                document.getElementById(localtable).appendChild(scheduleitem);
+                
+                var icon = document.createElement('td');
+                icon.classList.add('col-xs-1');
+                var imghtml = ""
+                if(obj['type'] == 1) {
+                    if(obj['icon'] != null && obj['icon'] != "") {
+                        imghtml = "<img src='/static/icons/" + obj['icon'] + "-icon.png' style='max-height:20px'>";
+                    }
+                    else {
+                        imghtml = "<img src='/static/icons/IT-icon.png' style='max-height:20px'>";
+                    }
+                }
+                else if( obj['type'] == 2) {
+                    imghtml = "<img src='/static/icons/manage-icon.png' style='max-height:20px'>";
+                }
+                else if( obj['type'] == 3) {
+                    imghtml = "<img src='/static/icons/Technical-icon.png' style='max-height:20px'>";
+                }
+                else {
+                    imghtml = "<img src='/static/icons/IT-icon.png' style='max-height:20px'>";
+                }
+                icon.innerHTML = imghtml;
+                document.getElementById(obj['id']).appendChild(icon);
+                
+                var daynum = document.createElement('td');
+                daynum.classList.add('col-xs-1');
+                daynum.innerHTML = obj['daynum'];
+                document.getElementById(obj['id']).appendChild(daynum);
+                
+                var day = document.createElement('td');
+                day.classList.add('col-xs-1');
+                day.innerHTML = obj['day'];
+                document.getElementById(obj['id']).appendChild(day);
+                
+                var coursename = document.createElement('td');
+                coursename.classList.add('col-xs-6');
+                var coursehtml = "";
+                if(obj['type'] == 1) {
+                    coursehtml = "<a href='/it?course=" + obj['course'] + "'>" + obj['name'] + "</a>";
+                }
+                else if(obj['type'] == 2) {
+                    coursehtml = "<a href='/manage-course?course=" + obj['course'] + "'>" + obj['name'] + "</a>";
+                }
+                else {
+                    coursehtml = obj['name'];
+                }
+                coursename.innerHTML = coursehtml;
+                coursename.style.textAlign = "left";
+                document.getElementById(obj['id']).appendChild(coursename);
+                
+                var duration = document.createElement('td');
+                duration.classList.add('col-xs-1');
+                duration.innerHTML = obj['duration'] + " Day(s)";
+                document.getElementById(obj['id']).appendChild(duration);
+                
+                var enquire = document.createElement('td');
+                enquire.classList.add('col-xs-1');
+                enquire.innerHTML = "<a href='/enquire?token=" + obj['id'] + "'>Enquire</a>";
+                document.getElementById(obj['id']).appendChild(enquire);
+                
+            
+            }
+        };
+    }
+</script>
+{% endblock %}
