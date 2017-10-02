@@ -14,23 +14,20 @@
         {% for row in courses %}
         <div class="col-sm-6">
             <div class="row">
-                <div id="{{ row.id }}" class="submcourseblock">
-                    <div class="col-xs-2 text-center">
-                        <i class="fa fa-handshake-o fa-4x" style="padding-top: 50px;color: darkblue"></i>
+                <a class='courselink' href="{{ url_for('managecourse', course = row.id) }}">
+                    <div id="{{ row.id }}" class="submcourseblock">
+                        <div class="col-xs-2 text-center">
+                            <i class="fa fa-handshake-o fa-4x" style="padding-top: 50px;color: darkblue"></i>
+                        </div>
+                        <div class="col-xs-10" style="max-height: 180px;overflow: hidden;">
+                            <h4 style="margin-bottom:0px;margin-top:10px;border-bottom: solid; border-width: 1px">{{ row.name }}</h4>
+                            {{ row.description }}
+                        </div>
+                        <div class="gradient2w"></div>
                     </div>
-                    <div class="col-xs-10" style="max-height: 180px;overflow: hidden;">
-                        <h4 style="margin-bottom:0px;margin-top:10px;border-bottom: solid; border-width: 1px">{{ row.name }}</h4>
-                        {{ row.description }}
-                    </div>
-                    <div class="gradient2w"></div>
-                </div>
+                </a>
             </div>
         </div>
-        <script>
-            document.getElementById('{{ row.id }}').onclick = function() {
-                window.location.href = "{{ url_for('managecourse', course = row.id) }}";
-            };
-        </script>
         {% endfor %}
     </div>
 </div>

@@ -42,36 +42,44 @@
 <div class="jumbotron jumbowhite">
     <div class="row text-center">
         <div class="col-sm-3">
-            <div id="it" class="course-logo">
-                <i class="fa fa-desktop"></i>
-                <div class="courselabelsfront">
-                    <h3>IT Courses</h3>
+            <a href="{{ url_for('itcourses') }}">
+                <div id="it" class="course-logo">
+                    <i class="fa fa-desktop"></i>
+                    <div class="courselabelsfront">
+                        <h3>IT Courses</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-3">
-            <div id="manage" class="course-logo">
-                <i class="fa fa-commenting"></i>
-                <div class="courselabelsfront">
-                    <h3>Management Skills</h3>
+            <a href="{{ url_for('management') }}">
+                <div id="manage" class="course-logo">
+                    <i class="fa fa-commenting"></i>
+                    <div class="courselabelsfront">
+                        <h3>Management Skills</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-3">
-            <div id="technical" class="course-logo">
-                <i class="fa fa-cogs"></i>
-                <div class="courselabelsfront">
-                    <h3>Technical Skills</h3>
+            <a href="{{ url_for('technical') }}">
+                <div id="technical" class="course-logo">
+                    <i class="fa fa-cogs"></i>
+                    <div class="courselabelsfront">
+                        <h3>Technical Skills</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-sm-3">
-            <div id="exams" class="course-logo">
-                <i class="fa fa-windows"></i>
-                <div class="courselabelsfront">
-                    <h3>MOS & MTA Exams</h3>
+            <a href="{{ url_for('exams') }}">
+                <div id="exams" class="course-logo">
+                    <i class="fa fa-windows"></i>
+                    <div class="courselabelsfront">
+                        <h3>MOS & MTA Exams</h3>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
@@ -288,7 +296,9 @@
         </div>
     </div>
     <div style="padding-top:30px;" class="row">
-        <button id="tailored-button" type="button" class="btn btn-info">Learn About Our Bespoke Options</button>
+        <a href="{{ url_for('tailored') }}">
+            <button id="tailored-button" type="button" class="btn btn-info">Learn About Our Bespoke Options</button>
+        </a>    
     </div>
 </div>
 <div class="jumbotron jumbowhite">
@@ -308,26 +318,9 @@
             <img class="img-responsive partner" src="{{ url_for('static', filename='companies/nhs-logo.jpg') }}">
             <img class="img-responsive partner" src="{{ url_for('static', filename='companies/calumet-logo.png') }}">
             <div style="padding-top:60px" class="row">
-                <button id="tailored-button" type="button" class="btn btn-info">View More of our Customers</button>
+                <button type="button" class="btn btn-info">View More of our Customers</button>
             </div>
         </div>
     </div>
 </div>
-<script>
-    document.getElementById('it').onclick = function() {
-        window.location.href = "{{ url_for('itcourses') }}";
-    };
-    document.getElementById('manage').onclick = function() {
-        window.location.href = "{{ url_for('management') }}";
-    };
-    document.getElementById('technical').onclick = function() {
-        window.location.href = "{{ url_for('technical') }}";
-    };
-    document.getElementById('exams').onclick = function() {
-        window.location.href = "{{ url_for('exams') }}";
-    };
-    document.getElementById('tailored-button').onclick = function() {
-        window.location.href = "{{ url_for('tailored') }}";
-    };
-</script>
 {% endblock %}
