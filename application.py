@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, url_for, jsonify
+from flask import Flask, flash, redirect, render_template, request, session, url_for, jsonify, send_from_directory
 from flask_session import Session
 from functools import wraps
 from tempfile import gettempdir
@@ -308,6 +308,10 @@ def search(message=""):
     else:
         return render_template("search.html")
 
+
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])    
     
 @app.errorhandler(404)
 def page_not_found(e):
