@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <br>
-                        <input id="submitbutton" type="submit" name="submit" class="btn btn-primary" onclick="submitPressed()" value="Submit Enquiry">
+                        <input id="submitbutton" type="submit" name="submit" class="btn btn-primary"  value="Submit Enquiry">
                     </div>
                 </div>
             </form>
@@ -64,11 +64,6 @@
     document.getElementById('submitbutton').disabled = true;
     function submitbut(response) {
         document.getElementById('submitbutton').disabled = false;
-    }
-
-    function submitPressed() {
-        document.getElementById('submitbutton').disabled = false;
-        document.getElementById('submitbutton').innerHTML = "Sending...";
     }
 </script>
 {% endblock %}
