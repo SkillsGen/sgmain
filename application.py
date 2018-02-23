@@ -160,12 +160,27 @@ def enquire(message=""):
             
             subject = "Website Enquiry from \"" + request.form.get("name") + "\" \"" + request.form.get("email") + "\" \"" + request.form.get("phone") + "\""
             
-            msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
+            msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com"]) #, "karen.reinolds@skillsgen.com"])
             
             msg.body = request.form.get("enquiry")
+
+            try:
+                db.execute("INSERT INTO enquiries (name, email, phone, enquiry) VALUES (:name, :email, :phone, :enquiry)",
+                            name = request.form.get("name"),
+                            email = request.form.get("email"),
+                            phone = request.form.get("phone"),
+                            enquiry = request.form.get("enquiry")
+                            )
+            except:
+                db.execute("INSERT INTO enquiries (name, email, phone, enquiry) VALUES (:name, :email, :phone, :enquiry)",
+                            name = request.form.get("name"),
+                            email = request.form.get("email"),
+                            phone = request.form.get("phone"),
+                            enquiry = "INVALID CHARACTER IN INQUIRY, PLEASE SEE EMAIL FOR CONTENTS"
+                            )
             
             try:
-                mail.send(msg)
+                mail.send(msg)                
             except:
                 return render_template("apologies.html")
             
@@ -321,5 +336,5 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port,debug=False)
+    app.run(host='0.0.0.0', port=port,debug=True)
     
