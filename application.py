@@ -160,7 +160,7 @@ def enquire(message=""):
             
             subject = "Website Enquiry from \"" + request.form.get("name") + "\" \"" + request.form.get("email") + "\" \"" + request.form.get("phone") + "\""
             
-            msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com"]) #, "karen.reinolds@skillsgen.com"])
+            msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
             
             msg.body = request.form.get("enquiry")
 
