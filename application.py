@@ -128,6 +128,9 @@ def schedule2(message=""):
 def about(message=""):
     return render_template("about.html")
 
+@app.route("/gdpr", methods=["GET"])
+def gdpr(message=""):
+    return render_template("gdpr.html")
 
 @app.route("/tailored", methods=["GET"])
 def tailored(message=""):

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    GDPR
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron jumbowhite text-center">
+    <div class="row">
+        <div class="col-sm-5">
+            <img class="img-responsive" src="{{ url_for('static', filename='gdpr.jpg') }}" style="padding-top: 60px; padding-bottom: 30px; margin: 0 auto">
+        </div>
+        <div class="col-sm-7" style="text-align: left">
+            <h3 style="text-align: center">Our GDPR Compliance</h3>
+            We do not collect or process data (personal or otherwise) except that which is necessary for the performance of our contract with the client. This includes the name, contact details and payment details of our client for the purposes of billing. It also includes the name of delegates that attend the course, a pre-course questionnaire and an anonymous post-course appraisal for the purposes of delivering our contractual services. All data is stored in an encrypted database that can only be accessed by the Managing director of SkillsGen and 1 employee who is also the designated Data Protection Officer of SkillsGen. The data that is required for billing is also stored on our accounting software, which can only be accessed by the two aforementioned people and our accountants.<br><br>
+            <b><u>Marketing Addendum:</u></b><br>
+            Thanks to the close relationship we have with our customers you will only hear from us after we have personally sought your permission(via phone or email). If for whatever reason you have changed your mind and would not like to hear from us anymore, or have any questions about our GDPR compliance please email: Karen.Reinolds@skillsgen.com.<br><br>
+            Thank You<br><br>
+            The SkillsGen Team.
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
