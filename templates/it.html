@@ -21,7 +21,7 @@
             <div class="publicdates">
                 <h4 style="border-bottom: solid; border-width: 1px; border-color:grey;padding-bottom:10px">Upcoming Dates</h4>
                 {% if dates|length == 0 %}
-                <p>Sorry there are no scheduled dates for this course in the near future.</p>
+                <p>Please enquire for availability.</p>
                 {% else %}
                 {% for row in dates %}
                 <a href="{{ url_for('enquire', token = row.id) }}"><h4>{{ row.date_part }} {{ row.month }}</h4></a>
