@@ -16,6 +16,7 @@ app = Flask(__name__)
 
 mail = Mail(app)
 
+app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
 app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
 app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
@@ -163,7 +164,7 @@ def enquire(message=""):
             
             subject = "Website Enquiry from \"" + request.form.get("name") + "\" \"" + request.form.get("email") + "\" \"" + request.form.get("phone") + "\""
             
-            msg = Message(subject, sender = "training@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
+            msg = Message(subject, sender = "skillsgencom@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
             
             msg.body = request.form.get("enquiry")
 
