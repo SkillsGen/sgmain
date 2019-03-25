@@ -109,7 +109,7 @@
         </div>
     </div>
     <div class="row text-center">
-        <button style="margin-top:0px" id="enquire-button" type="button" class="btn btn-info">Enquire</button>
+        <button style="margin-top:0px" id="stayahead-enquire" type="button" class="btn btn-info">Enquire</button>
     </div>
 </div>
 <div class="jumbotron">
@@ -159,11 +159,14 @@
         </div>
     </div>
     <div class="row text-center">
-        <button style="margin-top:0px" id="enquire-button" type="button" class="btn btn-info">Enquire</button>
+        <button style="margin-top:0px" id="datrix-enquire" type="button" class="btn btn-info">Enquire</button>
     </div>
 </div>
 <script>
-    document.getElementById('enquire-button').onclick = function() {
+    document.getElementById('stayahead-enquire').onclick = function() {
+        window.location.href = "{{ url_for('enquire') }}";
+    };
+    document.getElementById('datrix-enquire').onclick = function() {
         window.location.href = "{{ url_for('enquire') }}";
     };
 </script>
