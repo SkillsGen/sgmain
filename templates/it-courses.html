@@ -13,24 +13,24 @@
         <div id="excel" class="col-sm-4">
             <div class="courseblock">
                 <img class="img-responsive" src="{{ url_for('static', filename='logos/Excel-logo.png') }}">
-                <h3>Microsoft Excel</h3>
+                <h3 style="margin-top: 5px">Microsoft Excel</h3>
                 <p>From our <a href="{{ url_for('it', course = 4 )}}">Using Excel Level One</a> introductory course all the way to the ultimate <a href="{{ url_for('it', course = 9 )}}">Excel For Experts</a> course. Our Microsoft Excel courses are the best way to learn this powerful tool and really make it work for.</p>
+            </div>
+        </div>
+        <div id="project" class="col-sm-4">
+            <div class="courseblock">
+                <img class="img-responsive" src="{{ url_for('static', filename='logos/Office365-logo.png') }}">
+                <h3 style="margin-top: 5px">Microsoft Office 365</h3>
+                <p>Our popular <a href="{{ url_for('it', course = 61 )}}">Microsoft Office 365</a> course will get you up to speed on this all new cloud based Microsoft Office. Do it all at home, office or on the go with your smartphone or tablet</p>
             </div>
         </div>
         <div id="bitesize" class="col-sm-4">
             <div class="courseblock">
                 <img class="img-responsive" src="{{ url_for('static', filename='logos/Bitesize-logo.png') }}">
-                <h3>SkillsGen BiteSize</h3>
-                <p>Our <a href="{{ url_for('bitesize')}}">BiteSize Courses</a> are quick and to the point workshops that can get you up to speed on the software you use the most.</p>
+                <h3 style="margin-top: 5px">SkillsGen BiteSize</h3>
+                <p>Our <a href="{{ url_for('bitesize')}}">BiteSize Courses</a> are quick and to the point workshops that can get you up to speed on the software you use the most. Two or more courses on the same day is great for busy schedules.</p>
             </div>
-        </div>
-        <div id="project" class="col-sm-4">
-            <div class="courseblock">
-                <img class="img-responsive" src="{{ url_for('static', filename='logos/Project-logo.png') }}">
-                <h3>Microsoft Project</h3>
-                <p>Our <a href="{{ url_for('search', term = 'using project' )}}">Microsoft Project courses</a> will get you up to speed on using this popular tool for creating, maintaining and tracking your plans and projects.</p>
-            </div>
-        </div>
+        </div>        
     </div>
 </div>
 <div class="jumbotron jumbowhite">
