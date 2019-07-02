@@ -166,7 +166,14 @@ def enquire(message=""):
             
             msg = Message(subject, sender = "skillsgencom@skillsgen.com", recipients = ["sreinolds@gmail.com", "karen.reinolds@skillsgen.com"])
             
-            msg.body = request.form.get("enquiry")
+            message_body = ""
+            if(request.form.get("booking_id") != '0'):
+                booking = db.execute("SELECT bookings.date, courses.name AS course FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.id = :id",
+                                     id = int(request.form.get('booking_id')))
+                message_body = "DATE: " + booking[0]["date"] + " COURSE: " + booking[0]["course"] + "\n"
+            
+            message_body += request.form.get("enquiry")
+            msg.body = message_body
 
             try:
                 db.execute("INSERT INTO enquiries (name, email, phone, enquiry) VALUES (:name, :email, :phone, :enquiry)",
@@ -194,9 +201,8 @@ def enquire(message=""):
             return render_template('enquire.html', booking = None, enquiry = enquiry, captcha = "failed")
     
     elif request.args.get("token") != None:
-        booking = db.execute("SELECT bookings.date, courses.name AS course FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.id = :id",
-                                id = request.args.get('token')
-                                )
+        booking = db.execute("SELECT bookings.id, bookings.date, courses.name AS course FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.id = :id",
+                              id = request.args.get('token'))
         booking = booking[0]
     else:
         booking = None
