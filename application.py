@@ -170,7 +170,7 @@ def enquire(message=""):
             if(request.form.get("booking_id") != '0'):
                 booking = db.execute("SELECT bookings.date, courses.name AS course FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.id = :id",
                                      id = int(request.form.get('booking_id')))
-                message_body = "DATE: " + booking[0]["date"] + " COURSE: " + booking[0]["course"] + "\n"
+                message_body = "DATE: " + booking[0]["date"] + "\nCOURSE: " + booking[0]["course"] + "\n\n"
             
             message_body += request.form.get("enquiry")
             msg.body = message_body
@@ -180,7 +180,7 @@ def enquire(message=""):
                             name = request.form.get("name"),
                             email = request.form.get("email"),
                             phone = request.form.get("phone"),
-                            enquiry = request.form.get("enquiry")
+                            enquiry = message_body
                             )
             except:
                 db.execute("INSERT INTO enquiries (name, email, phone, enquiry) VALUES (:name, :email, :phone, :enquiry)",
