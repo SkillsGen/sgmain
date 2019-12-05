@@ -112,56 +112,6 @@
         <button style="margin-top:0px" id="stayahead-enquire" type="button" class="btn btn-info">Enquire</button>
     </div>
 </div>
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-sm-1" style="margin-top:0px">
-            <img class="img-responsive" src="{{ url_for('static', filename='partners/datrixA.png') }}" style="padding-top:30px">
-        </div>
-        <div class="col-sm-11">
-            <h3>In partnership with DATRIX</h3>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-4 technical2">    
-                            <img class="img-responsive img-width" src="{{ url_for('static', filename='techlogos/mcse-logo.png') }}" style="margin:0">
-                        </div>
-                        <div class="col-xs-8 technical2">
-                            <ul>
-                                <li>MCSE: Server Infrastructure</li>
-                                <li>MCSE: Private Cloud certification</li>
-                                <li>MCSE: Enterprise Devices and Apps</li>
-                                <li>MCSE: Data Platform</li>
-                                <li>MCSE: Business Intelligence</li>
-                                <li>MCSE: Messaging</li>
-                                <li>MCSE: Communication</li>
-                                <li>MCSE: SharePoint</li>
-                            </ul>
-                        </div>
-                    </div>                
-                </div>
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-4 technical2">
-                            <img class="img-responsive img-width" src="{{ url_for('static', filename='techlogos/comptia-logo.png') }}">
-                        </div>
-                        <div class="col-xs-8 technical2">
-                            <ul>
-                                <li>CompTIA A+</li>
-                                <li>CompTIA N+ (Network +)</li>
-                                <li>CompTIA Project+</li>
-                                <li>CompTIA Security+</li>
-                                <li>CompTIA Cloud+</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row text-center">
-        <button style="margin-top:0px" id="datrix-enquire" type="button" class="btn btn-info">Enquire</button>
-    </div>
-</div>
 <script>
     document.getElementById('stayahead-enquire').onclick = function() {
         window.location.href = "{{ url_for('enquire') }}";
