@@ -95,7 +95,7 @@ Session(app)
 @app.route("/", methods=["GET"])
 def index(message=""):
     
-    upcoming = [] #db.execute("SELECT bookings.id, bookings.course AS courseid, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
+    upcoming = db.execute("SELECT bookings.id, bookings.course AS courseid, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, to_char(CAST(date as DATE), 'day') AS day, to_char(CAST(date as DATE), 'month') AS month, EXTRACT(day FROM CAST(date as DATE)) FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date LIMIT 4")
     
     for row in upcoming:
         row["day"] = row["day"].title()
@@ -118,9 +118,8 @@ def schedule(message=""):
     
     else:
         schedule = db.execute("SELECT bookings.id, bookings.course, bookings.date, courses.name AS name, courses.type AS type, courses.icon as icon, courses.duration, to_char(CAST(date as DATE), 'Day') AS day, to_char(CAST(date as DATE), 'yyyy') AS year, to_char(CAST(date as DATE), 'Month') AS month, to_char(EXTRACT(day FROM CAST(date as DATE)), '99') as daynum FROM bookings INNER JOIN courses ON bookings.course=courses.id WHERE bookings.private = 0 AND type != 0 AND cast(date as DATE) > CURRENT_DATE ORDER BY date")
-        
-        return jsonify([])
-        #return jsonify(schedule)
+            
+        return jsonify(schedule)
     
     
 @app.route("/schedule2", methods=["GET"])
