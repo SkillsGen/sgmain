@@ -316,6 +316,10 @@ def technical(message=""):
 def exams(message=""):
     return render_template("exams.html")
 
+@app.route("/onlinelearning", methods=["GET"])
+def onlinelearning(message=""):
+    return render_template("onlinelearning.html")
+
 
 @app.route("/search", methods=["GET", "POST"])
 def search(message=""):

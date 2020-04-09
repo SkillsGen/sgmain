@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Online Learning
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron text-center">
+    <div class="row">
+        <h2>SkillsGen's first online training course!</h2>
+        <p style="padding-top:10px"></p>
+    </div>
+    <div class="row">
+      <iframe width="560" height="315" style="margin-top: 0px" src="https://www.youtube.com/embed/CtCT2MUraCM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<div class="jumbotron jumbowhite text-center">
+  <p style="padding-top:10px">
+    Our first online training session is on Microsoft Teams. The essential tool for anyone working from home. One of our top trainers will take you on a tour through Teams in the video above.
+  </p>
+  <p>
+    If you're interested in more courses like this, or would like something tailor made for your business, just <a href="{{ url_for('enquire') }}">enquire at this link</a> or call us on the number at the bottom of the screen.
+  </p>
+  <p>
+    Thanks for watching!
+  </p>
+
+</div>
+{% endblock %}
