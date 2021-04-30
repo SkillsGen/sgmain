@@ -191,10 +191,10 @@ def enquire(message=""):
                             enquiry = "INVALID CHARACTER IN INQUIRY, PLEASE SEE EMAIL FOR CONTENTS"
                             )
             
-            try:
-                mail.send(msg)                
-            except:
-                return render_template("apologies.html")
+#            try:
+#                mail.send(msg)                
+#            except:
+#                return render_template("apologies.html")
             
             return redirect(url_for('thankyou'))
         
